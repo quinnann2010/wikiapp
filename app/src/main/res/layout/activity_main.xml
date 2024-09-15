@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Fragment Container -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_buttons" />
+
+    <!-- Hidden buttons container (for the row of buttons) -->
+    <LinearLayout
+        android:id="@+id/hidden_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="56dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone">
+
+        <!-- Close button to hide the hidden buttons -->
+        <Button
+            android:id="@+id/close_more_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Close"
+            android:drawableTop="@drawable/close_button"
+            android:drawablePadding="4dp"
+            android:padding="8dp" />
+
+        <!-- Login/Logout button -->
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:drawableTop="@drawable/login_button"
+            android:drawablePadding="4dp"
+            android:padding="8dp" />
+
+        <!-- Logout button -->
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logout"
+            android:drawableTop="@drawable/logout_button"
+            android:drawablePadding="4dp"
+            android:padding="8dp"
+            android:visibility="gone" />
+
+        <!-- Donate button -->
+        <Button
+            android:id="@+id/donate_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/donate"
+            android:drawableTop="@drawable/donate_button"
+            android:drawablePadding="4dp"
+            android:padding="8dp" />
+
+        <!-- Language button -->
+        <Button
+            android:id="@+id/language_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/language"
+            android:drawableTop="@drawable/language_button"
+            android:drawablePadding="4dp"
+            android:padding="8dp" />
+
+        <!-- Bookmark button -->
+        <Button
+            android:id="@+id/bookmark_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bookmark"
+            android:drawableTop="@drawable/bookmark_button"
+            android:drawablePadding="4dp"
+            android:padding="8dp" />
+
+        <!-- User button (hidden initially) -->
+        <Button
+            android:id="@+id/user_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user"
+            android:drawableTop="@drawable/user_button"
+            android:drawablePadding="4dp"
+            android:padding="8dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Bottom buttons container (for the row of buttons) -->
+    <LinearLayout
+        android:id="@+id/bottom_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- Explore button -->
+        <Button
+            android:id="@+id/explore_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explore"
+            android:drawableTop="@drawable/explore_button"
+            android:drawablePadding="4dp"
+            android:padding="8dp" />
+
+        <!-- Save button -->
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:drawableTop="@drawable/save_button"
+            android:drawablePadding="4dp"
+            android:padding="8dp" />
+
+        <!-- History button -->
+        <Button
+            android:id="@+id/history_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="History"
+            android:drawableTop="@drawable/history_button"
+            android:drawablePadding="4dp"
+            android:padding="8dp" />
+
+        <!-- Search button -->
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:drawableTop="@drawable/search_button"
+            android:drawablePadding="4dp"
+            android:padding="8dp"
+            android:layout_marginEnd="16dp" />
+
+        <!-- More button at the end (no text, just icon) -->
+        <Button
+            android:id="@+id/more_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_setting"
+            android:drawablePadding="4dp"
+            android:padding="8dp"
+            android:text="" />
+    </LinearLayout>
+</RelativeLayout>

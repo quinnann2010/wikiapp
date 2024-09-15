@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select a donation amount:"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <RadioGroup
+        android:id="@+id/donation_amount_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/donate_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$5" />
+
+        <RadioButton
+            android:id="@+id/donate_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$10" />
+
+        <RadioButton
+            android:id="@+id/donate_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$20" />
+
+        <RadioButton
+            android:id="@+id/donate_custom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Custom Amount" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/custom_donation_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter custom amount"
+        android:visibility="gone"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/donate_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Donate"
+        android:layout_marginTop="32dp" />
+
+    <Button
+        android:id="@+id/back_to_main_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Main Page"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>
