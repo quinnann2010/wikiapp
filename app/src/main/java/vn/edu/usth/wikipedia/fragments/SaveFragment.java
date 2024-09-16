@@ -80,8 +80,7 @@ public class SaveFragment extends Fragment {
                     .replace(R.id.fragment_container, new SearchFragment())
                     .commit();
 
-            MainActivity mainActivity = (MainActivity) requireActivity();
-            mainActivity.showInitialButtons();
+
         });
     }
 

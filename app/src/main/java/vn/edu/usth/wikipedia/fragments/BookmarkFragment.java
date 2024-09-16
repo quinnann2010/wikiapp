@@ -76,10 +76,7 @@ public class BookmarkFragment extends Fragment {
             String articleUrl = bookmarks.get(position); // Get the article URL
             String articleTitle = getArticleTitleFromUrl(articleUrl); // Extract the article title
 
-            // Show the article in MainActivity
-            if (getActivity() instanceof MainActivity) {
-                ((MainActivity) getActivity()).showArticle(articleTitle, articleUrl);
-            }
+
         });
 
         // Handle click for the "Clear Bookmarks" button
@@ -102,9 +99,7 @@ public class BookmarkFragment extends Fragment {
                     .replace(R.id.fragment_container, new SearchFragment())
                     .commit();
 
-            // Show initial buttons in MainActivity
-            MainActivity mainActivity = (MainActivity) requireActivity();
-            mainActivity.showInitialButtons();
+
         });
     }
 

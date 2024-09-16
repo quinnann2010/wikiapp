@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/explore_button"
+        android:icon="@drawable/language_button"
+        android:title="@string/explore" />
+    <item
+        android:id="@+id/save_button"
+        android:icon="@drawable/save_button"
+        android:title="@string/saved" />
+    <item
+        android:id="@+id/history_button"
+        android:icon="@drawable/history_button"
+        android:title="@string/history" />
+    <item
+        android:id="@+id/search_button"
+        android:icon="@drawable/search_button"
+        android:title="@string/search" />
+
+</menu>

@@ -64,7 +64,6 @@ public class SearchFragment extends Fragment {
             if (getActivity() instanceof MainActivity) {
                 String title = result.get("title");
                 String url = result.get("url");
-                ((MainActivity) getActivity()).showArticle(title, url);
             }
         });
         searchResultsRecyclerView.setAdapter(adapter);

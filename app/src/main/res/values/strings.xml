@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">wikipedia</string>
+    <string name="app_name">Wikipedia</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_wikipedia">Search Wikipedia</string>
@@ -19,6 +19,10 @@
     <string name="save_article">Save Article\n</string>
     <string name="user">User</string>
     <string name="logout">Logout</string>
+    <string name="explore">Explore</string>
+    <string name="saved">Saved</string>
+    <string name="setting">Setting</string>
+    <string name="close">Close</string>
     <!-- Language options -->
     <string-array name="language_array">
         <item>English</item>

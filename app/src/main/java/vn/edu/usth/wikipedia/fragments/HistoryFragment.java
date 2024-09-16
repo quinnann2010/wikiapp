@@ -80,9 +80,7 @@ public class HistoryFragment extends Fragment {
                     .replace(R.id.fragment_container, new SearchFragment())
                     .commit();
 
-            // Ensure hidden buttons are displayed
-            MainActivity mainActivity = (MainActivity) requireActivity();
-            mainActivity.showInitialButtons();
+
         });
 
         // Handle item click in the history list
