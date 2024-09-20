@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/white_nav"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/login_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="50dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/setting"
+            android:gravity="center_vertical"
+            android:text="@string/create_an_account"
+            android:textColor="@color/grey"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/close_reg_button"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/close"
+            android:src="@drawable/close_button"
+            app:tint="@color/grey" />
+    </RelativeLayout>
+
 
     <!-- Username Input -->
     <EditText
         android:id="@+id/username_input"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Username" />
@@ -16,6 +53,8 @@
     <EditText
         android:id="@+id/password_input"
         android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_height="wrap_content"
         android:hint="Password"
         android:inputType="textPassword" />
@@ -25,12 +64,16 @@
         android:id="@+id/email_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:hint="Email"
         android:inputType="textEmailAddress" />
 
     <!-- Date of Birth -->
     <TextView
         android:layout_width="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_height="wrap_content"
         android:text="Date of Birth"
         android:textSize="16sp"
@@ -41,6 +84,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:orientation="horizontal"
         android:layout_marginTop="8dp">
 
@@ -75,28 +120,27 @@
         android:id="@+id/phone_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:hint="Phone Number"
         android:inputType="phone" />
 
     <!-- Gender Spinner -->
     <Spinner
         android:id="@+id/gender_spinner"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <!-- Register Button -->
     <Button
         android:id="@+id/register_button"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
         android:layout_marginTop="16dp" />
 
-    <!-- Back to Login Button -->
-    <Button
-        android:id="@+id/back_to_login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back to Login"
-        android:layout_marginTop="8dp" />
 </LinearLayout>

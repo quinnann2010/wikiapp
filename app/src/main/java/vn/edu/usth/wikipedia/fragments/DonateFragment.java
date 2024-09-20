@@ -1,11 +1,13 @@
 package vn.edu.usth.wikipedia.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -14,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
 
 /**
@@ -37,7 +40,17 @@ public class DonateFragment extends Fragment {
         donationAmountGroup = view.findViewById(R.id.donation_amount_group); // Initialize RadioGroup
         customDonationInput = view.findViewById(R.id.custom_donation_input); // Initialize EditText
         Button donateButton = view.findViewById(R.id.donate_button); // Initialize donate button
-        Button backButton = view.findViewById(R.id.back_to_main_button); // Initialize back button
+
+        ImageButton closeDonate = view.findViewById(R.id.close_donate_button);
+
+        closeDonate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the new activity
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Show custom donation input field when "Custom Amount" is selected
         donationAmountGroup.setOnCheckedChangeListener((group, checkedId) -> {
@@ -68,11 +81,5 @@ public class DonateFragment extends Fragment {
         });
 
         // Handle back to main page
-        backButton.setOnClickListener(v -> {
-            // Replace current fragment with SearchFragment and show main page
-            requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new SearchFragment())
-                    .commit();
-        });
     }
 }

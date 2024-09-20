@@ -13,14 +13,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import vn.edu.usth.wikipedia.adapters.BookmarkAdapter;
-import vn.edu.usth.wikipedia.adapters.BookmarksManager;
-import vn.edu.usth.wikipedia.MainActivity;
+import vn.edu.usth.wikipedia.managers.BookmarksManager;
 import vn.edu.usth.wikipedia.R;
 
 /**
@@ -50,6 +48,19 @@ public class BookmarkFragment extends Fragment {
         emptyView = view.findViewById(R.id.empty_view);
         Button clearBookmarksButton = view.findViewById(R.id.clear_bookmarks_button);
         Button backToHomeButton = view.findViewById(R.id.back_to_home_button);
+
+        bookmarksManager = new BookmarksManager(requireContext());
+        bookmarks = new ArrayList<>(bookmarksManager.getBookmarks());
+
+        // Add the articles about Nike, Manchester United, and Gucci
+        bookmarks.add("https://en.wikipedia.org/wiki/Nike,_Inc.");
+        bookmarks.add("https://en.wikipedia.org/wiki/Manchester_United_F.C.");
+        bookmarks.add("https://en.wikipedia.org/wiki/Gucci");
+
+        // Optionally, save the bookmarks in BookmarksManager
+        bookmarksManager.addBookmark("https://en.wikipedia.org/wiki/Nike,_Inc.");
+        bookmarksManager.addBookmark("https://en.wikipedia.org/wiki/Manchester_United_F.C.");
+        bookmarksManager.addBookmark("https://en.wikipedia.org/wiki/Gucci");
 
         // Initialize bookmarks manager and list
         bookmarksManager = new BookmarksManager(requireContext());
@@ -88,19 +99,6 @@ public class BookmarkFragment extends Fragment {
             Toast.makeText(getContext(), "Bookmarks cleared", Toast.LENGTH_SHORT).show();
         });
 
-        // Handle click for the "Back to Home" button
-        backToHomeButton.setOnClickListener(v -> {
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-            // Pop all fragments from the back stack
-            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-            // Replace current fragment with SearchFragment
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, new SearchFragment())
-                    .commit();
-
-
-        });
     }
 
     /**
