@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,29 +35,29 @@ public class AccountInfoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize views
         usernameText = view.findViewById(R.id.username_text);
         emailText = view.findViewById(R.id.email_text);
         phoneText = view.findViewById(R.id.phone_text);
         genderText = view.findViewById(R.id.gender_text);
         dobText = view.findViewById(R.id.dob_text);
         ImageButton closeUser = view.findViewById(R.id.close_user_button);
+        Button editButton = view.findViewById(R.id.edit_button);
 
         closeUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start the new activity
                 Intent intent = new Intent(getActivity(), SettingActivity.class);
                 startActivity(intent);
             }
         });
 
-        // Initialize DatabaseHelper
+        editButton.setOnClickListener(v -> navigateToEditProfile());
+
+
         dbHelper = new DatabaseHelper(getContext());
 
         // Retrieve logged-in username from shared preferences
-        String username = requireActivity().getSharedPreferences("user_prefs", requireContext().MODE_PRIVATE)
-                .getString("username", "Guest");
+        String username = requireActivity().getSharedPreferences("user_prefs", requireContext().MODE_PRIVATE).getString("username", "Guest");
 
         // Fetch user information from database
         loadUserInfo(username);
@@ -65,7 +66,6 @@ public class AccountInfoFragment extends Fragment {
     private void loadUserInfo(String username) {
         Cursor cursor = dbHelper.getUserData(username);
         if (cursor != null && cursor.moveToFirst()) {
-            // Set text fields with user data
             usernameText.setText(cursor.getString(cursor.getColumnIndex("username")));
             emailText.setText(cursor.getString(cursor.getColumnIndex("email")));
             phoneText.setText(cursor.getString(cursor.getColumnIndex("phone")));
@@ -75,5 +75,9 @@ public class AccountInfoFragment extends Fragment {
         } else {
             Toast.makeText(getContext(), "Unable to load user information", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void navigateToEditProfile() {
+        requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EditAccountFragment()).addToBackStack(null).commit();
     }
 }

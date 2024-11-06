@@ -60,6 +60,8 @@
     <string name="account_information">Account Information</string>
     <string name="phone">Phone:</string>
     <string name="gender">Gender:</string>
+    <string name="register">Register</string>
+    <string name="save_profile">Save Profile</string>
     <!-- Language options -->
     <string-array name="language_array">
         <item>English</item>

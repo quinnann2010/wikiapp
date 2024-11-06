@@ -75,7 +75,10 @@ public class SettingActivity extends AppCompatActivity {
         donateButtonText.setOnClickListener(view -> openDonateFragment());
         languageButton.setOnClickListener(view -> openLanguageFragment());
         languageButtonText.setOnClickListener(view -> openLanguageFragment());
-        closeButton.setOnClickListener(view -> finish());
+        closeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
 
     }
 

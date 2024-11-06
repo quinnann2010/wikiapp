@@ -53,20 +53,17 @@ public class RegisterFragment extends Fragment {
         ImageButton backButton = view.findViewById(R.id.close_reg_button);
 
         // Set up Day Spinner
-        ArrayAdapter<CharSequence> dayAdapter = ArrayAdapter.createFromResource(requireContext(),
-                R.array.day_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> dayAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.day_array, android.R.layout.simple_spinner_item);
         dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         daySpinner.setAdapter(dayAdapter);
 
         // Set up Month Spinner
-        ArrayAdapter<CharSequence> monthAdapter = ArrayAdapter.createFromResource(requireContext(),
-                R.array.month_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> monthAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.month_array, android.R.layout.simple_spinner_item);
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         monthSpinner.setAdapter(monthAdapter);
 
         // Set up Gender Spinner
-        ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(requireContext(),
-                R.array.gender_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.gender_array, android.R.layout.simple_spinner_item);
         genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderSpinner.setAdapter(genderAdapter);
 

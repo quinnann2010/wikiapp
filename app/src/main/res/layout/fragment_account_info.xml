@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white_nav">
+    android:background="@color/white_nav"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/user_bar"
@@ -41,61 +41,75 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:text="@string/username"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/username_text"
         android:layout_width="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/email"
         android:layout_marginStart="20dp"
-        android:textStyle="bold"/>
+        android:text="@string/email"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/email_text"
         android:layout_width="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="@string/phone"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/phone_text"
         android:layout_width="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:text="@string/gender"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/gender_text"
         android:layout_width="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:text="@string/date_of_birth"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/dob_text"
         android:layout_width="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp" />
+
+    <Button
+        android:id="@+id/edit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/grey"
+        android:text="@string/edit_profile" />
 </LinearLayout>
