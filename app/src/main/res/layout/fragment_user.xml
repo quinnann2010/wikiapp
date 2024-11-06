@@ -88,13 +88,23 @@
         android:text="@string/username"
         android:textSize="18sp" />
 
+<!--    <Button-->
+<!--        android:id="@+id/edit_profile_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/edit_profile"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:backgroundTint="@color/grey"-->
+<!--        android:layout_marginTop="20dp" />-->
+
     <Button
-        android:id="@+id/edit_profile_button"
+        android:id="@+id/back_to_setting_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/edit_profile"
+        android:text="@string/back_to_setting"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="@color/grey"
         android:layout_marginTop="20dp" />
+
 
 </LinearLayout>

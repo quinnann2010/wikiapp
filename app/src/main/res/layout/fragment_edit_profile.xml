@@ -49,16 +49,6 @@
         android:layout_marginEnd="20dp"
         android:hint="Name" />
 
-    <!-- Age Input -->
-    <EditText
-        android:id="@+id/edit_age"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="Age"
-        android:inputType="number" />
-
     <!-- Date of Birth -->
     <TextView
         android:layout_width="wrap_content"
@@ -82,7 +72,7 @@
         <!-- Date of Birth: Day Spinner -->
         <Spinner
             android:id="@+id/day_spinner"
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:layout_weight="1" />
@@ -90,7 +80,7 @@
         <!-- Date of Birth: Month Spinner -->
         <Spinner
             android:id="@+id/month_spinner"
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:layout_weight="1" />
@@ -98,7 +88,7 @@
         <!-- Date of Birth: Year Input -->
         <EditText
             android:id="@+id/year_input"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:hint="Year"

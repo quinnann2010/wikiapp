@@ -25,7 +25,6 @@ import vn.edu.usth.wikipedia.R;
 public class EditProfileFragment extends Fragment {
 
     private EditText editName;
-    private EditText editAge;
     private Spinner daySpinner;
     private Spinner monthSpinner;
     private EditText yearInput;
@@ -46,7 +45,6 @@ public class EditProfileFragment extends Fragment {
 
         // Initialize views
         editName = view.findViewById(R.id.edit_name);
-        editAge = view.findViewById(R.id.edit_age);
         daySpinner = view.findViewById(R.id.day_spinner);
         monthSpinner = view.findViewById(R.id.month_spinner);
         yearInput = view.findViewById(R.id.year_input);
@@ -65,7 +63,6 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
-
         // Set up spinners with dummy data
         ArrayAdapter<CharSequence> dayAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.day_array, android.R.layout.simple_spinner_item);
@@ -80,7 +77,6 @@ public class EditProfileFragment extends Fragment {
         // Load current user data from SharedPreferences
         SharedPreferences prefs = requireActivity().getSharedPreferences("user_prefs", getContext().MODE_PRIVATE);
         editName.setText(prefs.getString("userName", ""));
-        editAge.setText(String.valueOf(prefs.getInt("userAge", 0)));
         daySpinner.setSelection(prefs.getInt("userDay", 0));  // Set spinner selection based on saved index
         monthSpinner.setSelection(prefs.getInt("userMonth", 0));  // Set spinner selection based on saved index
         yearInput.setText(prefs.getString("userYear", ""));
@@ -97,7 +93,6 @@ public class EditProfileFragment extends Fragment {
         SharedPreferences prefs = getActivity().getSharedPreferences("user_prefs", getContext().MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("userName", editName.getText().toString());
-        editor.putInt("userAge", Integer.parseInt(editAge.getText().toString()));
         editor.putInt("userDay", daySpinner.getSelectedItemPosition());
         editor.putInt("userMonth", monthSpinner.getSelectedItemPosition());
         editor.putString("userYear", yearInput.getText().toString());

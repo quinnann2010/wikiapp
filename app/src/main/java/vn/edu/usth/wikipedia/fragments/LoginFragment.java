@@ -16,14 +16,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
+import vn.edu.usth.wikipedia.SettingActivity;
+import vn.edu.usth.wikipedia.database.DatabaseHelper;
 
 public class LoginFragment extends Fragment {
 
     private EditText usernameEditText;
     private EditText passwordEditText;
-
+    private SharedPreferences prefs;
 
     @Nullable
     @Override
@@ -36,13 +37,14 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize views
+        // Initialize views and preferences
         usernameEditText = view.findViewById(R.id.username_edit_text);
         passwordEditText = view.findViewById(R.id.password_edit_text);
         Button loginButton = view.findViewById(R.id.login_button);
         ImageButton closeLogin = view.findViewById(R.id.close_login_button);
         Button createButton = view.findViewById(R.id.create_button);
         Button forgotButton = view.findViewById(R.id.forgot_button);
+        prefs = requireActivity().getSharedPreferences("user_prefs", getContext().MODE_PRIVATE);
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,46 +69,44 @@ public class LoginFragment extends Fragment {
         closeLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start the new activity
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
+                requireActivity().onBackPressed();
             }
         });
-
 
         // Set up the click listener for the login button
         loginButton.setOnClickListener(v -> loginUser());
     }
 
     private void loginUser() {
-        // Retrieve username and password from EditText fields
         String username = usernameEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
 
-        // Validate input fields
         if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
             Toast.makeText(getContext(), "Please enter username and password", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Normally, you would validate the credentials with a server or database
-        // For demonstration, assume login is successful if fields are not empty
+        DatabaseHelper dbHelper = new DatabaseHelper(getContext());
+        boolean isValidUser = dbHelper.checkUser(username, password);
 
-        // Save user data to SharedPreferences
-        SharedPreferences prefs = requireActivity().getSharedPreferences("user_prefs", getContext().MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("userName", "John Doe"); // Replace with actual username
-        editor.putInt("userAge", 30); // Replace with actual age
-        editor.putString("userDob", "1994-09-15"); // Replace with actual date of birth
-        editor.putString("userEmail", "john.doe@example.com"); // Replace with actual email
-        editor.putString("userPassword", "password123"); // Replace with actual password
-        editor.putString("userUsername", username); // Save the entered username
-        editor.apply();
+        if (isValidUser) {
+            Toast.makeText(getContext(), "Login successful", Toast.LENGTH_SHORT).show();
 
-        // Navigate to the UserFragment
-        requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new UserFragment())
-                .addToBackStack(null)
-                .commit();
+            // Save login status and username
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("isLoggedIn", true);
+            editor.putString("username", username);
+            editor.apply();
+
+            // Open SettingActivity
+            Intent intent = new Intent(getActivity(), SettingActivity.class);
+            startActivity(intent);
+
+            // Close the LoginFragment
+            requireActivity().finish();
+
+        } else {
+            Toast.makeText(getContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
+        }
     }
 }
