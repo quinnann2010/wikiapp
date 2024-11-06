@@ -1,0 +1,686 @@
+[
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xhdpi_more_button.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xhdpi/more_button.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_more_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/more_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_history.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_history.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_ic_bookmark_outline.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/ic_bookmark_outline.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xhdpi_more_button_foreground.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xhdpi/more_button_foreground.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-mdpi_more_button.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-mdpi/more_button.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_donate_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/donate_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/color_color_bottom_nav.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/color/color_bottom_nav.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-mdpi_more_button_round.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-mdpi/more_button_round.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_language_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/language_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_ic_save_outline.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/ic_save_outline.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_explore.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_explore.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/menu_menu_bottom_nav.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/menu/menu_bottom_nav.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_bookmark_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/bookmark_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_article_image_2.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/article_image_2.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_history_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/history_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_donate_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/donate_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_forgot_password.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_forgot_password.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/xml_backup_rules.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxxhdpi_more_button_round.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxxhdpi/more_button_round.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-mdpi_more_button_foreground.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-mdpi/more_button_foreground.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_back_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/back_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxhdpi_more_button_foreground.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxhdpi/more_button_foreground.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxxhdpi_add_more.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxxhdpi/add_more.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_save_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/save_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_history_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/history_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_back_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/back_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-hdpi_more_button_round.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-hdpi/more_button_round.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_search_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/search_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_close_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/close_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_search_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/search_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_activity_setting.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/activity_setting.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_explore_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/explore_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_search.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_search.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_donate_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/donate_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_save_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/save_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_item_saved_article.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/item_saved_article.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_article_image_3.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/article_image_3.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_back_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/back_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_logout_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/logout_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_search_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/search_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_activity_main.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/activity_main.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-hdpi_add_more.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-hdpi/add_more.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/xml_data_extraction_rules.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/menu_menu.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/menu/menu.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable_round_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable/round_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_delete_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/delete_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-hdpi_more_button.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-hdpi/more_button.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_donate_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/donate_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_thang_nao_co_tien.jpg.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/thang_nao_co_tien.jpg"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_language_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/language_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_close_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/close_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_item_article.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/item_article.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_save.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_save.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_ic_save_outline.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/ic_save_outline.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/xml_network_security_config.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-mdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_wiki_logo.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/wiki_logo.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxhdpi_more_button_round.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxhdpi/more_button_round.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable_ic_launcher_background.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_back_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/back_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_article_image_4.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/article_image_4.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_wiki_icon.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/wiki_icon.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_ic_bookmark_filled.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/ic_bookmark_filled.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_close_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/close_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_close_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/close_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_history_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/history_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_ic_bookmark_filled.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/ic_bookmark_filled.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_more_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/more_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_item_search_result.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/item_search_result.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_delete_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/delete_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_donate.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_donate.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_article_image_1.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/article_image_1.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_bookmark_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/bookmark_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_language.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_language.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_more_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/more_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_ic_save_outline.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/ic_save_outline.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_bookmark.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_bookmark.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable_more_button_background.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable/more_button_background.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_delete_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/delete_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_search_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/search_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-mdpi_add_more.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-mdpi/add_more.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_language_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/language_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxhdpi_more_button.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxhdpi/more_button.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_login_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/login_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_save_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/save_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_user_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/user_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_article_image_5.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/article_image_5.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_save_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/save_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_bookmark_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/bookmark_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-hdpi_more_button_foreground.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-hdpi/more_button_foreground.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_item_history.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/item_history.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_ic_bookmark_outline.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/ic_bookmark_outline.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_ic_bookmark_outline.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/ic_bookmark_outline.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_delete_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/delete_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_user_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/user_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_more_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/more_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_explore_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/explore_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_edit_profile.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_edit_profile.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_delete_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/delete_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_ic_setting.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/ic_setting.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_explore_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/explore_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_language_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/language_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_login.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_login.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxhdpi_add_more.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxhdpi/add_more.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_login_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/login_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_ic_bookmark_outline.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/ic_bookmark_outline.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_history_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/history_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xhdpi_more_button_round.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xhdpi/more_button_round.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_back_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/back_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_ic_bookmark_filled.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/ic_bookmark_filled.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_article.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_article.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_bookmark_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/bookmark_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_bookmark_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/bookmark_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_user_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/user_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_save_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/save_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_more_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/more_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_close_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/close_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xhdpi_add_more.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xhdpi/add_more.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_logout_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/logout_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_logout_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/logout_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_search_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/search_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_user_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/user_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_login_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/login_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_language_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/language_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_login_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/login_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_explore_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/explore_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_ic_bookmark_filled.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/ic_bookmark_filled.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_donate_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/donate_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_setting_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/setting_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_usth_logo.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/usth_logo.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_ic_setting.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/ic_setting.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxxhdpi_more_button_foreground.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxxhdpi/more_button_foreground.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xxhdpi_ic_bookmark_outline.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xxhdpi/ic_bookmark_outline.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable_rounded_corner.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable/rounded_corner.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_ic_save_outline.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/ic_save_outline.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-anydpi-v26_more_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-anydpi-v26/more_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-xxxhdpi_more_button.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-xxxhdpi/more_button.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_user_button.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/user_button.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_logout_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/logout_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-hdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-anydpi_ic_setting.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-anydpi/ic_setting.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_user.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_user.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_login_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/login_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-xhdpi_ic_setting.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-xhdpi/ic_setting.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_ic_save_outline.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/ic_save_outline.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-anydpi-v26_more_button_round.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-anydpi-v26/more_button_round.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-mdpi_ic_setting.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-mdpi/ic_setting.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_explore_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/explore_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_fragment_register.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/fragment_register.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_ic_bookmark_filled.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/ic_bookmark_filled.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_logout_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/logout_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_dialog_save_article.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/dialog_save_article.xml"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/drawable-hdpi_history_button.png.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/drawable-hdpi/history_button.png"
+    },
+    {
+        "merged": "vn.edu.usth.wikipedia.app-debug-31:/layout_item_bookmark.xml.flat",
+        "source": "vn.edu.usth.wikipedia.app-main-33:/layout/item_bookmark.xml"
+    }
+]
