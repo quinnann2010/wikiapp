@@ -1,4 +1,4 @@
-USTH ICT 2024 Web Application Development
+USTH ICT 2024 Mobile Application Development
 
 Group ID: 17
 Project Name: Wikipedia Client
