@@ -1,51 +1,54 @@
 package vn.edu.usth.wikipedia.fragments;
 
-import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import vn.edu.usth.wikipedia.adapters.BookmarksManager;
-import vn.edu.usth.wikipedia.adapters.HistoryManager;
-import vn.edu.usth.wikipedia.R;
-import vn.edu.usth.wikipedia.adapters.SavedArticlesManager;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.HashSet;
+import java.util.Set;
 
-/**
- * Fragment to display an article using a WebView and provide functionality for bookmarking,
- * saving, and navigating back.
- */
+import vn.edu.usth.wikipedia.R;
+
 public class ArticleFragment extends Fragment {
 
     private static final String ARG_TITLE = "title";
     private static final String ARG_URL = "url";
-
+    private static final String PREFS_NAME = "bookmarksPrefs";
+    private static final String BOOKMARKS_KEY = "bookmarks";
     private String articleTitle;
     private String articleUrl;
     private WebView webView;
-    private BookmarksManager bookmarksManager;
-    private HistoryManager historyManager;
-    private SavedArticlesManager savedArticlesManager;
+    private ProgressBar progressBar;
+    private Set<String> bookmarksSet; // Replaced BookmarksManager with a Set
 
-    /**
-     * Creates a new instance of ArticleFragment with the specified title and URL.
-     *
-     * @param title The title of the article.
-     * @param url The URL of the article.
-     * @return A new instance of ArticleFragment.
-     */
     public static ArticleFragment newInstance(String title, String url) {
         ArticleFragment fragment = new ArticleFragment();
         Bundle args = new Bundle();
+
+        try {
+            url = URLEncoder.encode(url, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         args.putString(ARG_TITLE, title);
         args.putString(ARG_URL, url);
         fragment.setArguments(args);
@@ -55,7 +58,6 @@ public class ArticleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_article, container, false);
     }
 
@@ -63,111 +65,98 @@ public class ArticleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Retrieve arguments passed to the fragment
         if (getArguments() != null) {
             articleTitle = getArguments().getString(ARG_TITLE);
             articleUrl = getArguments().getString(ARG_URL);
+
+            try {
+                articleUrl = URLDecoder.decode(articleUrl, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            Log.d("ArticleFragment", "Loading URL: " + articleUrl);
         }
 
-        // Initialize UI components
         webView = view.findViewById(R.id.article_webview);
         ImageButton backButton = view.findViewById(R.id.back_button);
         ImageButton bookmarkButton = view.findViewById(R.id.bookmark_button);
-        ImageButton saveButton = view.findViewById(R.id.save_button);
+        progressBar = view.findViewById(R.id.progress_bar);
 
-        // Initialize managers for bookmarks, history, and saved articles
-        bookmarksManager = new BookmarksManager(requireContext());
-        historyManager = HistoryManager.getInstance(requireContext());
-        savedArticlesManager = new SavedArticlesManager(requireContext());
+        // Initialize the bookmarks set (in-memory for the session)
+        bookmarksSet = new HashSet<>();
+        loadBookmarks(); // Load bookmarks from persistent storage (if any)
 
-        // Configure WebView settings
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(articleUrl);
 
         // Add the current article URL to history
-        historyManager.addToHistory(articleUrl);
+        // historyManager.addToHistory(articleUrl); // This logic remains unchanged
 
-        // Set click listener for the back button
+        if (articleUrl != null) {
+            webView.loadUrl(articleUrl);
+        } else {
+            Toast.makeText(getContext(), "Cannot load URL", Toast.LENGTH_SHORT).show();
+        }
+
         backButton.setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
 
-        // Update the bookmark button state based on whether the article is bookmarked
+        // Update the bookmark button based on whether the article is bookmarked
         updateBookmarkButtonState(bookmarkButton);
 
-        // Set click listener for the bookmark button
         bookmarkButton.setOnClickListener(v -> {
-            if (bookmarksManager.isBookmarked(articleUrl)) {
-                bookmarksManager.removeBookmark(articleUrl);
+            if (isBookmarked(articleUrl)) {
+                removeBookmark(articleUrl);
                 Toast.makeText(getContext(), "Removed from bookmarks", Toast.LENGTH_SHORT).show();
             } else {
-                bookmarksManager.addBookmark(articleUrl);
+                addBookmark(articleUrl);
                 Toast.makeText(getContext(), "Added to bookmarks", Toast.LENGTH_SHORT).show();
             }
             updateBookmarkButtonState(bookmarkButton);
         });
-
-        // Set click listener for the save button
-        saveButton.setOnClickListener(v -> showSaveDialog());
     }
 
-    /**
-     * Updates the bookmark button's icon based on whether the article is bookmarked.
-     *
-     * @param bookmarkButton The ImageButton for bookmarking.
-     */
+    // Method to check if the article URL is bookmarked
+    private boolean isBookmarked(String url) {
+        return bookmarksSet.contains(url);
+    }
+
+    // Method to add the article URL to the bookmark set
+    private void addBookmark(String url) {
+        bookmarksSet.add(url);
+        saveBookmarks(); // Persist bookmarks
+    }
+
+    // Method to remove the article URL from the bookmark set
+    private void removeBookmark(String url) {
+        bookmarksSet.remove(url);
+        saveBookmarks(); // Persist bookmarks
+    }
+
+    // Method to update the bookmark button based on whether the article is bookmarked
     private void updateBookmarkButtonState(ImageButton bookmarkButton) {
-        if (bookmarksManager.isBookmarked(articleUrl)) {
+        if (isBookmarked(articleUrl)) {
             bookmarkButton.setImageResource(R.drawable.ic_bookmark_filled);
         } else {
             bookmarkButton.setImageResource(R.drawable.ic_bookmark_outline);
         }
     }
 
-    /**
-     * Shows a dialog allowing the user to enter a title and save the article.
-     */
-    private void showSaveDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Save Article");
-
-        final EditText input = new EditText(getContext());
-        input.setHint("Enter title");
-        builder.setView(input);
-
-        builder.setPositiveButton("Save", (dialog, which) -> {
-            String customTitle = input.getText().toString().trim();
-            if (customTitle.isEmpty()) {
-                customTitle = "No Title";
-            }
-            saveArticle(customTitle);
-        });
-
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
-
-        builder.show();
+    // Load bookmarks
+    private void loadBookmarks() {
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        bookmarksSet = sharedPreferences.getStringSet(BOOKMARKS_KEY, new HashSet<>());
     }
 
-    /**
-     * Saves or removes the article from saved articles based on its current state.
-     *
-     * @param title The title for saving the article.
-     */
-    private void saveArticle(String title) {
-        if (savedArticlesManager.isArticleSaved(articleUrl)) {
-            savedArticlesManager.removeArticle(articleUrl);
-            Toast.makeText(getContext(), "Removed from saved articles", Toast.LENGTH_SHORT).show();
-        } else {
-            webView.saveWebArchive(savedArticlesManager.getArticleFilePath(articleUrl));
-            savedArticlesManager.addArticle(articleUrl, title);
-            Toast.makeText(getContext(), "Saved for offline reading", Toast.LENGTH_SHORT).show();
-        }
+    // Save bookmarks to persistent storage
+    private void saveBookmarks() {
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putStringSet(BOOKMARKS_KEY, bookmarksSet);
+        editor.apply();
     }
 
-    /**
-     * Gets the URL of the current article.
-     *
-     * @return The URL of the article.
-     */
     public String getArticleUrl() {
         return articleUrl;
     }

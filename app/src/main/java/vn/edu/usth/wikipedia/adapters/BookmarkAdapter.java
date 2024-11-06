@@ -4,62 +4,83 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import vn.edu.usth.wikipedia.R;
 
-/**
- * Adapter for displaying a list of bookmarks in a ListView with the option to delete bookmarks.
- */
-public class BookmarkAdapter extends ArrayAdapter<String> {
+public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHolder> {
+    private final Context context;
+    private final List<String> bookmarks;
+    private final BookmarkDeleteListener deleteListener;
+    private OnItemClickListener onItemClickListener;
 
-    private final OnDeleteClickListener onDeleteClickListener; // Listener for delete button clicks
-
-    /**
-     * Interface for handling delete button clicks.
-     */
-    public interface OnDeleteClickListener {
-        void onDeleteClick(String bookmark);
+    public interface BookmarkDeleteListener {
+        void onDelete(String bookmark);
     }
 
-    /**
-     * Constructor for BookmarkAdapter.
-     *
-     * @param context The application context.
-     * @param bookmarks The list of bookmarks to display.
-     * @param onDeleteClickListener The listener to handle delete button clicks.
-     */
-    public BookmarkAdapter(Context context, List<String> bookmarks, OnDeleteClickListener onDeleteClickListener) {
-        super(context, 0, bookmarks); // Call the parent constructor with the context, a resource ID of 0, and the list of bookmarks
-        this.onDeleteClickListener = onDeleteClickListener; // Initialize the delete click listener
+    public interface OnItemClickListener {
+        void onItemClick(String bookmark);
+    }
+
+    public BookmarkAdapter(Context context, List<String> bookmarks, BookmarkDeleteListener deleteListener) {
+        this.context = context;
+        this.bookmarks = bookmarks;
+        this.deleteListener = deleteListener;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_bookmark, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        // Inflate the item view if it doesn't already exist
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_bookmark, parent, false);
-        }
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        String bookmark = bookmarks.get(position);
+        holder.titleTextView.setText(bookmark);
 
-        // Find views in the item layout
-        TextView bookmarkTitle = convertView.findViewById(R.id.bookmark_title); // TextView to display the bookmark title
-        Button deleteButton = convertView.findViewById(R.id.delete_button); // Button to delete the bookmark
-
-        // Get the bookmark for the current position
-        String bookmark = getItem(position);
-        bookmarkTitle.setText(bookmark); // Set the bookmark title in the TextView
-
-        // Set an OnClickListener for the delete button
-        deleteButton.setOnClickListener(v -> {
-            if (onDeleteClickListener != null) {
-                onDeleteClickListener.onDeleteClick(bookmark); // Call the delete listener when the button is clicked
+        // Xử lý sự kiện xóa bookmark
+        holder.deleteButton.setOnClickListener(v -> {
+            if (deleteListener != null) {
+                deleteListener.onDelete(bookmark);
+                bookmarks.remove(position); // Xóa bookmark khỏi danh sách
+                notifyItemRemoved(position); // Cập nhật RecyclerView
+                notifyItemRangeChanged(position, bookmarks.size()); // Cập nhật các vị trí còn lại
             }
         });
 
-        return convertView; // Return the item view
+        // Xử lý sự kiện nhấp vào bookmark
+        holder.itemView.setOnClickListener(v -> {
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClick(bookmark);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return bookmarks.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView titleTextView;
+        ImageButton deleteButton;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            titleTextView = itemView.findViewById(R.id.bookmark_title);
+            deleteButton = itemView.findViewById(R.id.delete_button);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package vn.edu.usth.wikipedia.fragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -14,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
 
 public class LanguageFragment extends Fragment {
@@ -43,6 +46,17 @@ public class LanguageFragment extends Fragment {
 
         // Set up click listener for the save button
         saveLanguageButton.setOnClickListener(v -> saveLanguagePreference());
+
+        ImageButton closeLanguage = view.findViewById(R.id.close_language_button);
+
+        closeLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the new activity
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void saveLanguagePreference() {
@@ -90,7 +104,7 @@ public class LanguageFragment extends Fragment {
     private void navigateToHomepage() {
         // Navigate back to the homepage (assuming SearchFragment is the homepage)
         requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new SearchFragment())
+                .replace(R.id.fragment_container, new LanguageFragment())
                 .commit();
     }
 

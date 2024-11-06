@@ -4,12 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -27,6 +32,7 @@ public class ExploreFragment extends Fragment {
     private ArticleAdapter articleAdapter;
     private List<Article> articles;
     private ArticleManager articleManager; // Manage fetching articles
+
 
     @Nullable
     @Override
@@ -49,11 +55,22 @@ public class ExploreFragment extends Fragment {
             openArticle(article);
         });
         recyclerView.setAdapter(articleAdapter); // Set up adapter
+
+        Button showButton = view.findViewById(R.id.show_vu);
+        showButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView.setVisibility(View.VISIBLE);
+            }
+        });
+
+
     }
 
     private void openArticle(Article article) {
         // Open the selected article in a new fragment
-        Fragment articleFragment = ArticleFragment.newInstance(article.getTitle(), article.getUrl());
+        recyclerView.setVisibility(View.GONE);
+                Fragment articleFragment = ArticleFragment.newInstance(article.getTitle(), article.getUrl());
         requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, articleFragment)
                 .addToBackStack(null)

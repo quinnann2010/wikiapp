@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -26,8 +27,6 @@ public class RegisterFragment extends Fragment {
     private EditText yearInput;
     private EditText phoneInput;
     private Spinner genderSpinner;
-    private Button registerButton;
-    private Button backToLoginButton;
 
     @Nullable
     @Override
@@ -49,8 +48,8 @@ public class RegisterFragment extends Fragment {
         yearInput = view.findViewById(R.id.year_input);
         phoneInput = view.findViewById(R.id.phone_input);
         genderSpinner = view.findViewById(R.id.gender_spinner);
-        registerButton = view.findViewById(R.id.register_button);
-        backToLoginButton = view.findViewById(R.id.back_to_login_button);
+        Button registerButton = view.findViewById(R.id.register_button);
+        ImageButton backButton = view.findViewById(R.id.close_reg_button);
 
         // Set up Day Spinner
         ArrayAdapter<CharSequence> dayAdapter = ArrayAdapter.createFromResource(requireContext(),
@@ -74,7 +73,7 @@ public class RegisterFragment extends Fragment {
         registerButton.setOnClickListener(v -> performRegistration());
 
         // Back to Login Button Click Listener
-        backToLoginButton.setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
+        backButton.setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
     }
 
     private void performRegistration() {

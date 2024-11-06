@@ -1,5 +1,6 @@
 package vn.edu.usth.wikipedia.fragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 
@@ -14,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
 
 /**
@@ -51,6 +54,17 @@ public class EditProfileFragment extends Fragment {
         editPassword = view.findViewById(R.id.edit_password);
         editUsername = view.findViewById(R.id.edit_username);
         saveButton = view.findViewById(R.id.save_button);
+        ImageButton closeUser = view.findViewById(R.id.close_user_button);
+
+        closeUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the new activity
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Set up spinners with dummy data
         ArrayAdapter<CharSequence> dayAdapter = ArrayAdapter.createFromResource(requireContext(),
