@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">Wikipedia</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_wikipedia">Search Wikipedia</string>
+    <string name="search">Search</string>
+    <string name="clear_history">Clear History</string>
+    <string name="language">Language</string>
+    <string name="history">History</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="donate">Donate</string>
+    <string name="login">Login</string>
+    <string name="search_term">Search term</string>
+    <string name="go_back">Back to main page\n</string>
+    <string name="save_language">Save Language</string>
+    <string name="more">More\n</string>
+    <string name="this_is_the_save_fragment">This is the Save Fragment</string>
+    <string name="save">Save\n</string>
+    <string name="save_article">Save Article\n</string>
+    <string name="user">User</string>
+    <string name="logout">Logout</string>
+    <string name="explore">Explore</string>
+    <string name="saved">Saved</string>
+    <string name="setting">Setting</string>
+    <string name="close">Close</string>
+    <!-- Language options -->
+    <string-array name="language_array">
+        <item>English</item>
+        <item>Tiếng Việt</item>
+        <item>Français</item>
+        <item>Deutsch</item>
+        <item>Español</item>
+        <item>日本語</item>
+        <item>中文</item>
+        <item>한국어</item>
+        <item>Italiano</item>
+        <item>Português</item>
+        <item>Русский</item>
+        <item>عربى</item>
+        <item>Türkçe</item>
+        <item>Polski</item>
+        <item>ไทย</item>
+        <item>Swedish</item>
+        <item>Danish</item>
+        <item>Norsk</item>
+        <item>Finnish</item>
+        <item>Hrvatski</item>
+        <item>Slovenský</item>
+        <item>Magyar</item>
+    </string-array>
+    <!-- Array for Day -->
+    <string-array name="day_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+
+    <!-- Array for Month -->
+    <string-array name="month_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    <!-- Array for Gender -->
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+</resources>
