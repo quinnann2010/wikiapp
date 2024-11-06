@@ -57,6 +57,9 @@
     <string name="show_article">Show Article</string>
     <string name="back_to_setting">Back to Setting</string>
     <string name="guest">Guest</string>
+    <string name="account_information">Account Information</string>
+    <string name="phone">Phone:</string>
+    <string name="gender">Gender:</string>
     <!-- Language options -->
     <string-array name="language_array">
         <item>English</item>

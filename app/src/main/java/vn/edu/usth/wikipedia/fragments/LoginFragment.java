@@ -69,7 +69,9 @@ public class LoginFragment extends Fragment {
         closeLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().onBackPressed();
+                // Start the new activity
+                Intent intent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
             }
         });
 

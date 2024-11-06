@@ -56,12 +56,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:background="@color/white">
-            <ImageView
-                android:layout_width="45dp"
+            <ImageButton
                 android:id="@+id/user_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
                 android:layout_margin="10dp"
-                android:layout_height="45dp"
+                android:contentDescription="@string/login"
                 android:src="@drawable/user_icon"
+                android:background="@android:color/transparent"
                 app:tint="@color/light_grey" />
 
             <TextView

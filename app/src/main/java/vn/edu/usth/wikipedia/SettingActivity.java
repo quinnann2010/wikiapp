@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import vn.edu.usth.wikipedia.fragments.AccountInfoFragment;
 import vn.edu.usth.wikipedia.fragments.DonateFragment;
 import vn.edu.usth.wikipedia.fragments.LanguageFragment;
 import vn.edu.usth.wikipedia.fragments.LoginFragment;
@@ -27,9 +28,9 @@ import vn.edu.usth.wikipedia.fragments.LoginFragment;
 public class SettingActivity extends AppCompatActivity {
 
     Button loginButtonText, donateButtonText, languageButtonText;
-    ImageButton loginButton, donateButton, languageButton, closeButton;
+    ImageButton loginButton, donateButton, languageButton, closeButton, userImage;
     RelativeLayout settingBar;
-    ImageView usthImage, userImage;
+    ImageView usthImage;
     TextView usernameText;
     SharedPreferences prefs;
 
@@ -69,12 +70,31 @@ public class SettingActivity extends AppCompatActivity {
         }
 
         // Set up button actions
+        userImage.setOnClickListener(view -> openAccountInfoFragment());
         donateButton.setOnClickListener(view -> openDonateFragment());
         donateButtonText.setOnClickListener(view -> openDonateFragment());
         languageButton.setOnClickListener(view -> openLanguageFragment());
         languageButtonText.setOnClickListener(view -> openLanguageFragment());
         closeButton.setOnClickListener(view -> finish());
 
+    }
+
+    private void openAccountInfoFragment() {
+        loginButton.setVisibility(View.GONE);
+        donateButton.setVisibility(View.GONE);
+        languageButton.setVisibility(View.GONE);
+        loginButtonText.setVisibility(View.GONE);
+        donateButtonText.setVisibility(View.GONE);
+        languageButtonText.setVisibility(View.GONE);
+        settingBar.setVisibility(View.GONE);
+        usthImage.setVisibility(View.GONE);
+        userImage.setVisibility(View.GONE);
+        usernameText.setVisibility(View.GONE);
+        Fragment accountInfoFragment = new AccountInfoFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, accountInfoFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     private void openLoginFragment() {
