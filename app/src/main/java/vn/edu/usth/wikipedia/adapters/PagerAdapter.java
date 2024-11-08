@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import vn.edu.usth.wikipedia.fragments.BookmarkFragment;
 import vn.edu.usth.wikipedia.fragments.ExploreFragment;
 import vn.edu.usth.wikipedia.fragments.HistoryFragment;
 import vn.edu.usth.wikipedia.fragments.SaveFragment;
@@ -20,16 +19,16 @@ public class PagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position) {
-            default:
-                return new SearchFragment();
             case 0:
                 return new ExploreFragment();
             case 1:
-                return new BookmarkFragment();
+                return new SaveFragment();
             case 2:
                 return new HistoryFragment();
             case 3:
                 return new SearchFragment();
+            default:
+                return new ExploreFragment();
         }
     }
 

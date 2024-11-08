@@ -1,65 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_nav"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:id="@+id/donate_bar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="50dp"
-        android:background="@color/white">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:contentDescription="@string/setting"
-            android:gravity="center_vertical"
-            android:text="@string/donate"
-            android:textColor="@color/grey"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/close_donate_button"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:backgroundTint="@color/white"
-            android:contentDescription="@string/close"
-            android:src="@drawable/close_button"
-            app:tint="@color/grey" />
-    </RelativeLayout>
-
-
-    <ImageView
-        android:layout_width="235dp"
-        android:layout_height="162dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/thang_nao_co_tien" />
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/select_a_donation_amount"
-        android:textColor="@color/black"
-        android:textSize="19sp" />
+        android:text="Select a donation amount:"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
 
     <RadioGroup
         android:id="@+id/donation_amount_group"
         android:layout_width="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -67,25 +22,25 @@
             android:id="@+id/donate_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_5" />
+            android:text="$5" />
 
         <RadioButton
             android:id="@+id/donate_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_10" />
+            android:text="$10" />
 
         <RadioButton
             android:id="@+id/donate_20"
-            android:layout_width="69dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_20" />
+            android:text="$20" />
 
         <RadioButton
             android:id="@+id/donate_custom"
-            android:layout_width="148dp"
-            android:layout_height="59dp"
-            android:text="@string/custom_amount" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Custom Amount" />
 
     </RadioGroup>
 
@@ -93,18 +48,23 @@
         android:id="@+id/custom_donation_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:inputType="number"
-        android:visibility="gone" />
+        android:hint="Enter custom amount"
+        android:visibility="gone"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="16dp"/>
 
     <Button
         android:id="@+id/donate_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/grey"
-        android:text="@string/donate" />
+        android:text="Donate"
+        android:layout_marginTop="32dp" />
 
+    <Button
+        android:id="@+id/back_to_main_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Main Page"
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>

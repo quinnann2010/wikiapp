@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -27,7 +26,6 @@ public class SettingActivity extends AppCompatActivity {
     Button loginButtonText, donateButtonText, languageButtonText;
     ImageButton loginButton, donateButton, languageButton, closeButton;
     RelativeLayout settingBar;
-    ImageView usthImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +41,6 @@ public class SettingActivity extends AppCompatActivity {
         languageButtonText = findViewById(R.id.language_button_text);
         closeButton = findViewById(R.id.close_more_button);
         settingBar = findViewById(R.id.setting_bar);
-        usthImage = findViewById(R.id.usth_logo);
 
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +101,6 @@ public class SettingActivity extends AppCompatActivity {
         donateButtonText.setVisibility(View.GONE);
         languageButtonText.setVisibility(View.GONE);
         settingBar.setVisibility(View.GONE);
-        usthImage.setVisibility(View.GONE);
         Fragment loginFragment = new LoginFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, loginFragment);
@@ -121,7 +117,6 @@ public class SettingActivity extends AppCompatActivity {
         donateButtonText.setVisibility(View.GONE);
         languageButtonText.setVisibility(View.GONE);
         settingBar.setVisibility(View.GONE);
-        usthImage.setVisibility(View.GONE);
         Fragment donanteFragment = new DonateFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, donanteFragment);
@@ -138,7 +133,6 @@ public class SettingActivity extends AppCompatActivity {
         donateButtonText.setVisibility(View.GONE);
         languageButtonText.setVisibility(View.GONE);
         settingBar.setVisibility(View.GONE);
-        usthImage.setVisibility(View.GONE);
         Fragment languageFragment = new LanguageFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, languageFragment);

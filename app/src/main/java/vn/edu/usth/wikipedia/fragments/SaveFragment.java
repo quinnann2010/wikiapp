@@ -16,9 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.edu.usth.wikipedia.models.Article;
+import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
 import vn.edu.usth.wikipedia.adapters.SavedArticleAdapter;
-import vn.edu.usth.wikipedia.managers.SavedArticlesManager;
+import vn.edu.usth.wikipedia.adapters.SavedArticlesManager;
 
 public class SaveFragment extends Fragment {
 
@@ -90,9 +91,7 @@ public class SaveFragment extends Fragment {
             for (File file : files) {
                 String url = file.getName().replace(".mht", "");
                 String title = savedArticlesManager.getArticleTitle(url);
-                String description ="Description is not exist";
-                int imageResId = R.drawable.wiki_icon;
-                articles.add(new Article(title,description, url, imageResId));
+                articles.add(new Article(title, url));
             }
         }
         return articles;

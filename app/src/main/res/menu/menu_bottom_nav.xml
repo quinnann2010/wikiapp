@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/explore_button"
-        android:icon="@drawable/explore_button"
+        android:icon="@drawable/language_button"
         android:title="@string/explore" />
     <item
-        android:id="@+id/bookmark_button"
-        android:icon="@drawable/bookmark_button"
-        android:title="@string/bookmark" />
+        android:id="@+id/save_button"
+        android:icon="@drawable/save_button"
+        android:title="@string/saved" />
     <item
         android:id="@+id/history_button"
         android:icon="@drawable/history_button"

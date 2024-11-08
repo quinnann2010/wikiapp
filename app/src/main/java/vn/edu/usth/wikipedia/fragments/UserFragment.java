@@ -1,21 +1,18 @@
 package vn.edu.usth.wikipedia.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
 
 public class UserFragment extends Fragment {
@@ -46,16 +43,6 @@ public class UserFragment extends Fragment {
         userPasswordTextView = view.findViewById(R.id.user_password);
         userUsernameTextView = view.findViewById(R.id.user_username);
         editProfileButton = view.findViewById(R.id.edit_profile_button);
-        ImageButton closeUser = view.findViewById(R.id.close_user_button);
-
-        closeUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the new activity
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
         // Load user data from SharedPreferences
         SharedPreferences prefs = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);

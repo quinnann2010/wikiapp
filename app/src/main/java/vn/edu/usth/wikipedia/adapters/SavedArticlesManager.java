@@ -1,4 +1,4 @@
-package vn.edu.usth.wikipedia.managers;
+package vn.edu.usth.wikipedia.adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;

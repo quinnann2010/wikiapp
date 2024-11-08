@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +17,7 @@ import vn.edu.usth.wikipedia.R;
 public class ForgotPasswordFragment extends Fragment {
 
     private EditText emailInput;
+    private Button resetPasswordButton;
 
     @Nullable
     @Override
@@ -30,11 +30,9 @@ public class ForgotPasswordFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         emailInput = view.findViewById(R.id.email_input);
-        Button resetPasswordButton = view.findViewById(R.id.reset_password_button);
-        ImageButton backButton = view.findViewById(R.id.close_forgot_button);
+        resetPasswordButton = view.findViewById(R.id.reset_password_button);
 
-        backButton.setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
-        resetPasswordButton.setOnClickListener(v -> performPasswordReset());
+        resetPasswordButton.setOnClickListener(v -> performPasswordReset()); // Set up button click listener
     }
 
     private void performPasswordReset() {

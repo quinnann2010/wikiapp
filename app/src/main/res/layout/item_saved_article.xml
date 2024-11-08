@@ -11,13 +11,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/article_title"
+        android:text="Article Title"
         android:textSize="16sp"/>
 
     <Button
         android:id="@+id/delete_button"
         android:layout_width="wrap_content"
-        android:backgroundTint="@color/grey"
         android:layout_height="wrap_content"
-        android:text="@string/delete" />
+        android:text="Delete" />
 </LinearLayout>

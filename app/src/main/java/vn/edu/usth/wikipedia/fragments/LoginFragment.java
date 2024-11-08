@@ -1,6 +1,5 @@
 package vn.edu.usth.wikipedia.fragments;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,21 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
 
 public class LoginFragment extends Fragment {
 
     private EditText usernameEditText;
     private EditText passwordEditText;
-
+    private Button loginButton;
 
     @Nullable
     @Override
@@ -39,40 +36,7 @@ public class LoginFragment extends Fragment {
         // Initialize views
         usernameEditText = view.findViewById(R.id.username_edit_text);
         passwordEditText = view.findViewById(R.id.password_edit_text);
-        Button loginButton = view.findViewById(R.id.login_button);
-        ImageButton closeLogin = view.findViewById(R.id.close_login_button);
-        Button createButton = view.findViewById(R.id.create_button);
-        Button forgotButton = view.findViewById(R.id.forgot_button);
-
-        createButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new RegisterFragment())
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-        forgotButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new ForgotPasswordFragment())
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-        closeLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the new activity
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        loginButton = view.findViewById(R.id.login_button);
 
         // Set up the click listener for the login button
         loginButton.setOnClickListener(v -> loginUser());

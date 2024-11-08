@@ -6,15 +6,7 @@
     <WebView
         android:id="@+id/article_webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/progress_bar" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+        android:layout_height="match_parent" />
 
     <ImageButton
         android:id="@+id/back_button"
@@ -30,9 +22,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_bookmark_outline"
-        android:contentDescription="Bookmark"
+        android:contentDescription="@string/bookmark"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true" />
 
-
+    <ImageButton
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/save_button"
+        android:contentDescription="@string/save_article"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/bookmark_button"
+        android:layout_marginTop="16dp" />
 </RelativeLayout>

@@ -33,6 +33,7 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
 import vn.edu.usth.wikipedia.adapters.SearchResultsAdapter;
 
@@ -60,9 +61,10 @@ public class SearchFragment extends Fragment {
 
         searchResults = new ArrayList<>();
         adapter = new SearchResultsAdapter(searchResults, result -> {
-            String title = result.get("title");
-            String url = result.get("url");
-            openArticleFragment(title, url); // Open the article on click
+            if (getActivity() instanceof MainActivity) {
+                String title = result.get("title");
+                String url = result.get("url");
+            }
         });
         searchResultsRecyclerView.setAdapter(adapter);
         searchResultsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -78,17 +80,7 @@ public class SearchFragment extends Fragment {
         }
 
         String languageCode = getLanguagePreference();
-        String url;
-        try {
-            // Encode the query to handle spaces and special characters
-            String encodedQuery = URLEncoder.encode(query, StandardCharsets.UTF_8.toString());
-            url = "https://" + languageCode + ".wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch="
-                    + encodedQuery;
-        } catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(getContext(), "Encoding error", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        String url = "https://" + languageCode + ".wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=" + URLEncoder.encode(query, StandardCharsets.UTF_8);
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
@@ -96,8 +88,7 @@ public class SearchFragment extends Fragment {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                requireActivity().runOnUiThread(() ->
-                        Toast.makeText(getContext(), "Search failed", Toast.LENGTH_SHORT).show());
+                requireActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Search failed", Toast.LENGTH_SHORT).show());
             }
 
             @Override
@@ -107,8 +98,7 @@ public class SearchFragment extends Fragment {
                 String responseData = response.body().string();
                 Gson gson = new Gson();
                 JsonObject jsonObject = gson.fromJson(responseData, JsonObject.class);
-                JsonObject queryObject = jsonObject.getAsJsonObject("query");
-                JsonArray searchResultsArray = queryObject.getAsJsonArray("search");
+                JsonArray searchResultsArray = jsonObject.getAsJsonObject("query").getAsJsonArray("search");
 
                 List<Map<String, String>> results = new ArrayList<>();
                 for (int i = 0; i < searchResultsArray.size(); i++) {
@@ -116,15 +106,10 @@ public class SearchFragment extends Fragment {
                     Map<String, String> result = new HashMap<>();
                     result.put("title", item.get("title").getAsString());
                     result.put("snippet", item.get("snippet").getAsString());
-
                     // Construct the full URL for the article
                     String articleTitle = item.get("title").getAsString();
-                    String encodedTitle = URLEncoder.encode(articleTitle, StandardCharsets.UTF_8.toString());
-
-                    // Replace '+' with '_'
-                    String articleUrl = "https://" + languageCode + ".wikipedia.org/wiki/"
-                            + encodedTitle.replace("+", "_");
-
+                    String encodedTitle = URLEncoder.encode(articleTitle, StandardCharsets.UTF_8);
+                    String articleUrl = "https://" + languageCode + ".wikipedia.org/wiki/" + encodedTitle;
                     result.put("url", articleUrl);
                     results.add(result);
                 }
@@ -136,16 +121,6 @@ public class SearchFragment extends Fragment {
                 });
             }
         });
-    }
-
-    private void openArticleFragment(String title, String url) {
-        // Load the ArticleFragment with the passed title and URL
-        Fragment articleFragment = ArticleFragment.newInstance(title, url);
-        requireActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, articleFragment) // Assuming fragment_container is the container ID
-                .addToBackStack(null)
-                .commit();
     }
 
     private String getLanguagePreference() {
