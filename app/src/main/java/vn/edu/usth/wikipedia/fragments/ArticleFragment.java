@@ -43,7 +43,7 @@ public class ArticleFragment extends Fragment {
         Bundle args = new Bundle();
 
         try {
-            url = URLEncoder.encode(url, "UTF-8");
+            url = URLEncoder.encode(url, "UTF-8"); // Mã hóa URL
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -57,19 +57,20 @@ public class ArticleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_article, container, false);
+        return inflater.inflate(R.layout.fragment_article, container, false); // Inflate layout
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Lấy dữ liệu từ arguments
         if (getArguments() != null) {
             articleTitle = getArguments().getString(ARG_TITLE);
             articleUrl = getArguments().getString(ARG_URL);
 
             try {
-                articleUrl = URLDecoder.decode(articleUrl, "UTF-8");
+                articleUrl = URLDecoder.decode(articleUrl, "UTF-8"); // Giải mã URL
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -82,41 +83,55 @@ public class ArticleFragment extends Fragment {
         ImageButton bookmarkButton = view.findViewById(R.id.bookmark_button);
         progressBar = view.findViewById(R.id.progress_bar);
 
-        bookmarksManager = new BookmarksManager(requireContext());
-        historyManager = HistoryManager.getInstance(requireContext());
+        bookmarksManager = new BookmarksManager(requireContext()); // Khởi tạo quản lý bookmark
+        historyManager = HistoryManager.getInstance(requireContext()); // Khởi tạo quản lý lịch sử
 
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl(articleUrl);
+        webView.getSettings().setJavaScriptEnabled(true); // Bật JavaScript
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                progressBar.setVisibility(View.VISIBLE); // Hiện progress bar khi trang bắt đầu tải
+            }
 
-        // Add the current article URL to history
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                progressBar.setVisibility(View.GONE); // Ẩn progress bar khi trang đã tải xong
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                Toast.makeText(getContext(), "Failed to load URL", Toast.LENGTH_SHORT).show(); // Thông báo lỗi tải trang
+            }
+        });
+
+        // Thêm URL bài viết vào lịch sử
         historyManager.addToHistory(articleUrl);
 
-
-
         if (articleUrl != null) {
-            webView.loadUrl(articleUrl);
+            webView.loadUrl(articleUrl); // Tải URL bài viết
         } else {
             Toast.makeText(getContext(), "Cannot load URL", Toast.LENGTH_SHORT).show();
         }
 
+        // Quay lại trang trước
         backButton.setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
 
-        updateBookmarkButtonState(bookmarkButton);
+        updateBookmarkButtonState(bookmarkButton); // Cập nhật trạng thái nút bookmark
 
         bookmarkButton.setOnClickListener(v -> {
             if (bookmarksManager.isBookmarked(articleUrl)) {
-                bookmarksManager.removeBookmark(articleUrl);
+                bookmarksManager.removeBookmark(articleUrl); // Xóa bookmark
                 Toast.makeText(getContext(), "Removed from bookmarks", Toast.LENGTH_SHORT).show();
             } else {
-                bookmarksManager.addBookmark(articleUrl);
+                bookmarksManager.addBookmark(articleUrl); // Thêm bookmark
                 Toast.makeText(getContext(), "Added to bookmarks", Toast.LENGTH_SHORT).show();
             }
-            updateBookmarkButtonState(bookmarkButton);
+            updateBookmarkButtonState(bookmarkButton); // Cập nhật trạng thái nút bookmark
         });
     }
 
     private void updateBookmarkButtonState(ImageButton bookmarkButton) {
+        // Cập nhật hình ảnh của nút bookmark dựa trên trạng thái bookmark
         if (bookmarksManager.isBookmarked(articleUrl)) {
             bookmarkButton.setImageResource(R.drawable.ic_bookmark_filled);
         } else {
@@ -125,6 +140,6 @@ public class ArticleFragment extends Fragment {
     }
 
     public String getArticleUrl() {
-        return articleUrl;
+        return articleUrl; // Trả về URL bài viết
     }
 }
