@@ -54,10 +54,13 @@ public class MainActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         bottomNavigationView.getMenu().findItem(R.id.explore_button).setChecked(true);
+                        break;
                     case 1:
-                        bottomNavigationView.getMenu().findItem(R.id.save_button).setChecked(true);
+                        bottomNavigationView.getMenu().findItem(R.id.bookmark_button).setChecked(true);
+                        break;
                     case 2:
                         bottomNavigationView.getMenu().findItem(R.id.history_button).setChecked(true);
+                        break;
                     case 3:
                         bottomNavigationView.getMenu().findItem(R.id.search_button).setChecked(true);
                         break;
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 int itemId = item.getItemId();
                 if (itemId == R.id.explore_button) {
                     viewPager2.setCurrentItem(0, true);
-                } else if (itemId == R.id.save_button) {
+                } else if (itemId == R.id.bookmark_button) {
                     viewPager2.setCurrentItem(1, true);
                 } else if (itemId == R.id.history_button) {
                     viewPager2.setCurrentItem(2, true);
@@ -81,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
 
     private void setLocale(String languageCode) {

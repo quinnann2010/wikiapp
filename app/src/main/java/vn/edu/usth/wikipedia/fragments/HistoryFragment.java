@@ -1,5 +1,7 @@
 package vn.edu.usth.wikipedia.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +14,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import vn.edu.usth.wikipedia.adapters.HistoryAdapter;
-import vn.edu.usth.wikipedia.adapters.HistoryManager;
-import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
 
 public class HistoryFragment extends Fragment {
@@ -27,12 +29,18 @@ public class HistoryFragment extends Fragment {
     private TextView emptyView;
     private HistoryAdapter historyAdapter;
     private List<String> history;
-    private HistoryManager historyManager;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_history, container, false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadHistory();
+        checkIfEmpty();
     }
 
     @Override
@@ -42,61 +50,48 @@ public class HistoryFragment extends Fragment {
         historyListView = view.findViewById(R.id.history_list);
         emptyView = view.findViewById(R.id.empty_view);
         Button clearHistoryButton = view.findViewById(R.id.clear_history_button);
-        Button backToHomeButton = view.findViewById(R.id.back_to_home_button);
 
-        historyManager = HistoryManager.getInstance(requireContext()); // Use singleton instance
-
-        history = historyManager.getHistory(); // Retrieve history from HistoryManager
+        history = new ArrayList<>();
         historyAdapter = new HistoryAdapter(getContext(), history, historyItem -> {
-            // Delete a history item when the delete button is pressed
-            historyManager.removeFromHistory(historyItem);
+            removeFromHistory(historyItem);
             history.remove(historyItem);
-            historyAdapter.notifyDataSetChanged();  // Update the UI
-            checkIfEmpty();  // Check and update "Empty" message
+            historyAdapter.notifyDataSetChanged();
+            checkIfEmpty();
             Toast.makeText(getContext(), "History item deleted", Toast.LENGTH_SHORT).show();
         });
         historyListView.setAdapter(historyAdapter);
 
-        // Check if there are no items in the list and update the UI
-        checkIfEmpty();
-
-        // Clear all history
         clearHistoryButton.setOnClickListener(v -> {
-            historyManager.clearHistory(); // Clear history via HistoryManager
+            clearHistory();
             history.clear();
             historyAdapter.notifyDataSetChanged();
-            checkIfEmpty();  // Check and update "Empty" message
+            checkIfEmpty();
             Toast.makeText(getContext(), "History cleared", Toast.LENGTH_SHORT).show();
-        });
-
-        // Return to the main screen
-        backToHomeButton.setOnClickListener(v -> {
-            // Pop back stack
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-            // Replace with default fragment (e.g., SearchFragment) if needed
-            requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new SearchFragment())
-                    .commit();
-
-
-        });
-
-        // Handle item click in the history list
-        historyListView.setOnItemClickListener((parent, view1, position, id) -> {
-            String url = history.get(position);
-            openArticle(url);
         });
     }
 
-    private void openArticle(String url) {
-        // Create a new ArticleFragment and pass the URL
-        ArticleFragment articleFragment = ArticleFragment.newInstance("Article Title", url);
-        requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, articleFragment)
-                .addToBackStack(null)
-                .commit();
+    private void loadHistory() {
+        SharedPreferences prefs = requireActivity().getSharedPreferences("user_history", Context.MODE_PRIVATE);
+        Set<String> historySet = prefs.getStringSet("history", new HashSet<>());
+        history.clear();
+        history.addAll(historySet);
+        historyAdapter.notifyDataSetChanged();
+    }
+
+    private void removeFromHistory(String url) {
+        SharedPreferences prefs = requireActivity().getSharedPreferences("user_history", Context.MODE_PRIVATE);
+        Set<String> historySet = new HashSet<>(prefs.getStringSet("history", new HashSet<>()));
+        historySet.remove(url);
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putStringSet("history", historySet);
+        editor.apply();
+    }
+
+    private void clearHistory() {
+        SharedPreferences prefs = requireActivity().getSharedPreferences("user_history", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove("history").apply();
     }
 
     private void checkIfEmpty() {

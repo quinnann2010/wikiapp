@@ -39,7 +39,7 @@ public class DonateFragment extends Fragment {
         donationAmountGroup = view.findViewById(R.id.donation_amount_group); // Initialize RadioGroup
         customDonationInput = view.findViewById(R.id.custom_donation_input); // Initialize EditText
         Button donateButton = view.findViewById(R.id.donate_button); // Initialize donate button
-<<<<<<< HEAD
+ HEAD
 
         ImageButton closeDonate = view.findViewById(R.id.close_donate_button);
 
@@ -51,9 +51,9 @@ public class DonateFragment extends Fragment {
                 startActivity(intent);
             }
         });
-=======
+
         Button backButton = view.findViewById(R.id.back_to_main_button); // Initialize back button
->>>>>>> 379b9e3ce88c3743090609deacb69a5b9595535c
+ 379b9e3ce88c3743090609deacb69a5b9595535c
 
         // Show custom donation input field when "Custom Amount" is selected
         donationAmountGroup.setOnCheckedChangeListener((group, checkedId) -> {
@@ -93,7 +93,7 @@ public class DonateFragment extends Fragment {
         });
     }
 
-<<<<<<< HEAD
+ HEAD
     // Helper method to check if the donation amount is valid
     private boolean isValidDonationAmount(String amount) {
         try {
@@ -109,7 +109,7 @@ public class DonateFragment extends Fragment {
         Intent intent = new Intent(getActivity(), PaymentActivity.class); // Navigate to payment screen
         intent.putExtra("donationAmount", donationAmount); // Pass the donation amount
         startActivity(intent);
-=======
+
         // Handle back to main page
         backButton.setOnClickListener(v -> {
             // Replace current fragment with SearchFragment and show main page
@@ -117,6 +117,6 @@ public class DonateFragment extends Fragment {
                     .replace(R.id.fragment_container, new SearchFragment())
                     .commit();
         });
->>>>>>> 379b9e3ce88c3743090609deacb69a5b9595535c
+ 379b9e3ce88c3743090609deacb69a5b9595535c
     }
 }

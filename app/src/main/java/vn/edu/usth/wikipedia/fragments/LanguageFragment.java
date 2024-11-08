@@ -1,128 +1,122 @@
 package vn.edu.usth.wikipedia.fragments;
 
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-<<<<<<< HEAD
-import java.util.Locale;
-
-import vn.edu.usth.wikipedia.MainActivity;
-=======
->>>>>>> 379b9e3ce88c3743090609deacb69a5b9595535c
 import vn.edu.usth.wikipedia.R;
+import vn.edu.usth.wikipedia.PaymentActivity; // Import the payment screen
 
-public class LanguageFragment extends Fragment {
+/**
+ * Fragment for handling donations.
+ */
+public class DonateFragment extends Fragment {
 
-    private Spinner languageSpinner;
+    private RadioGroup donationAmountGroup; // Group for donation amount options
+    private EditText customDonationInput; // Input field for custom donation amount
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for t     his fragment
-        return inflater.inflate(R.layout.fragment_language, container, false);
+        return inflater.inflate(R.layout.fragment_donate, container, false); // Inflate the layout for this fragment
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize the spinner and button
-        languageSpinner = view.findViewById(R.id.language_spinner);
-        Button saveLanguageButton = view.findViewById(R.id.save_language_button);
+        donationAmountGroup = view.findViewById(R.id.donation_amount_group); // Initialize RadioGroup
+        customDonationInput = view.findViewById(R.id.custom_donation_input); // Initialize EditText
+        Button donateButton = view.findViewById(R.id.donate_button); // Initialize donate button
+ HEAD
 
-        // Set up the spinner with language options
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(),
-                R.array.language_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        languageSpinner.setAdapter(adapter);
+        ImageButton closeDonate = view.findViewById(R.id.close_donate_button);
 
-        // Set up click listener for the save button
-        saveLanguageButton.setOnClickListener(v -> saveLanguagePreference());
+        closeDonate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Close and return to main activity
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button backButton = view.findViewById(R.id.back_to_main_button); // Initialize back button
+ 379b9e3ce88c3743090609deacb69a5b9595535c
+
+        // Show custom donation input field when "Custom Amount" is selected
+        donationAmountGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.donate_custom) {
+                customDonationInput.setVisibility(View.VISIBLE); // Show custom donation input
+            } else {
+                customDonationInput.setVisibility(View.GONE); // Hide custom donation input
+            }
+        });
+
+        donateButton.setOnClickListener(v -> {
+            int selectedId = donationAmountGroup.getCheckedRadioButtonId(); // Get selected RadioButton ID
+            String donationAmount = "";
+
+            if (selectedId == R.id.donate_custom) {
+                donationAmount = customDonationInput.getText().toString().trim(); // Get custom donation amount
+
+                // Input validation for custom amount
+                if (TextUtils.isEmpty(donationAmount)) {
+                    Toast.makeText(getContext(), "Please enter a custom amount", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (!isValidDonationAmount(donationAmount)) {
+                    Toast.makeText(getContext(), "Please enter a valid amount greater than zero", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+            } else {
+                // Get amount from the selected RadioButton
+                RadioButton selectedButton = view.findViewById(selectedId);
+                donationAmount = selectedButton.getText().toString();
+            }
+
+            // Proceed to payment method screen with the donation amount
+            proceedToPayment(donationAmount);
+        });
     }
 
-    private void saveLanguagePreference() {
-        // Save the selected language to SharedPreferences
-        String selectedLanguage = languageSpinner.getSelectedItem().toString();
-        String languageCode = getLanguageCodeFromLanguage(selectedLanguage);
+ HEAD
+    // Helper method to check if the donation amount is valid
+    private boolean isValidDonationAmount(String amount) {
+        try {
+            double donation = Double.parseDouble(amount);
+            return donation > 0; // Amount must be greater than zero
+        } catch (NumberFormatException e) {
+            return false; // Not a valid number
+        }
+    }
 
-        SharedPreferences prefs = requireActivity().getSharedPreferences("user_prefs", getContext().MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("language_code", languageCode);
-        editor.apply();
-
-        // Restart the MainActivity to apply changes
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+    // Method to proceed to the payment method screen
+    private void proceedToPayment(String donationAmount) {
+        Intent intent = new Intent(getActivity(), PaymentActivity.class); // Navigate to payment screen
+        intent.putExtra("donationAmount", donationAmount); // Pass the donation amount
         startActivity(intent);
 
-        // Finish the SettingActivity
-        requireActivity().finish();
-    }
-
-
-    private void setLocale(String languageCode) {
-        // Set the locale and update the configuration
-        Locale locale = new Locale(languageCode);
-        Locale.setDefault(locale);
-
-        Resources resources = getResources();
-        Configuration config = new Configuration();
-        config.locale = locale;
-        resources.updateConfiguration(config, resources.getDisplayMetrics());
-
-        // Optionally, recreate the activity to apply the language change
-        requireActivity().recreate();
-    }
-
-
-
-    private void navigateToHomepage() {
-        // Navigate back to the homepage (assuming SearchFragment is the homepage)
-        requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new SearchFragment())
-                .commit();
-    }
-
-
-    private String getLanguageCodeFromLanguage(String language) {
-        // Map language names to their corresponding language codes
-        switch (language) {
-            case "Tiếng Việt": return "vi";
-            case "Français": return "fr";
-            case "Deutsch": return "de";
-            case "Español": return "es";
-            case "日本語": return "ja";
-            case "中文": return "zh";
-            case "한국어": return "ko";
-            case "Italiano": return "it";
-            case "Português": return "pt";
-            case "Русский": return "ru";
-            case "عربى": return "ar";
-            case "Türkçe": return "tr";
-            case "Polski": return "pl";
-            case "ไทย": return "th";
-            case "Swedish": return "sv";
-            case "Danish": return "da";
-            case "Norsk": return "no";
-            case "Finnish": return "fi";
-            case "Hrvatski": return "hr";
-            case "Slovenský": return "sk";
-            case "Magyar": return "hu";
-            case "English": return "en";
-            default: return "en"; // Default to English if not found
-        }
+        // Handle back to main page
+        backButton.setOnClickListener(v -> {
+            // Replace current fragment with SearchFragment and show main page
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new SearchFragment())
+                    .commit();
+        });
+ 379b9e3ce88c3743090609deacb69a5b9595535c
     }
 }

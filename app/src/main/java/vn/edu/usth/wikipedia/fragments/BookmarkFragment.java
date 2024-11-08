@@ -1,43 +1,42 @@
 package vn.edu.usth.wikipedia.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import vn.edu.usth.wikipedia.adapters.BookmarkAdapter;
-import vn.edu.usth.wikipedia.adapters.BookmarksManager;
-import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
+import vn.edu.usth.wikipedia.adapters.BookmarkAdapter;
 
-/**
- * Fragment to display and manage a list of bookmarks.
- */
-public class BookmarkFragment extends Fragment {
+public class BookmarkFragment extends Fragment implements BookmarkAdapter.BookmarkDeleteListener {
 
-    private ListView bookmarkListView; // ListView to display bookmarks
-    private TextView emptyView; // TextView to display when no bookmarks are present
-    private BookmarkAdapter bookmarkAdapter; // Adapter to manage the bookmarks list
-    private List<String> bookmarks; // List of bookmarks
-    private BookmarksManager bookmarksManager; // Manager for handling bookmarks
+    private static final String PREFS_NAME = "bookmarksPrefs";
+    private static final String BOOKMARKS_KEY = "bookmarks";
+    private List<String> bookmarks;
+    private RecyclerView bookmarkRecyclerView;
+    private TextView emptyView;
+    private BookmarkAdapter bookmarkAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_bookmark, container, false);
     }
 
@@ -45,87 +44,84 @@ public class BookmarkFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize UI elements
-        bookmarkListView = view.findViewById(R.id.bookmark_list);
+        bookmarkRecyclerView = view.findViewById(R.id.bookmark_list);
         emptyView = view.findViewById(R.id.empty_view);
-        Button clearBookmarksButton = view.findViewById(R.id.clear_bookmarks_button);
-        Button backToHomeButton = view.findViewById(R.id.back_to_home_button);
+        Button clearButton = view.findViewById(R.id.clear_bookmarks_button);
 
-        // Initialize bookmarks manager and list
-        bookmarksManager = new BookmarksManager(requireContext());
-        bookmarks = new ArrayList<>(bookmarksManager.getBookmarks());
+        bookmarks = new ArrayList<>();
+        loadBookmarks();
 
-        // Set up the adapter with a delete click listener
-        bookmarkAdapter = new BookmarkAdapter(getContext(), bookmarks, bookmark -> {
-            // Handle delete action
-            bookmarksManager.removeBookmark(bookmark); // Remove from manager
-            bookmarks.remove(bookmark); // Remove from list
-            bookmarkAdapter.notifyDataSetChanged(); // Update adapter
-            checkIfEmpty(); // Update empty view
-            Toast.makeText(getContext(), "Bookmark deleted", Toast.LENGTH_SHORT).show();
-        });
+        bookmarkAdapter = new BookmarkAdapter(getContext(), bookmarks, this);
+        bookmarkRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        bookmarkRecyclerView.setAdapter(bookmarkAdapter);
 
-        // Set the adapter for the ListView
-        bookmarkListView.setAdapter(bookmarkAdapter);
-
-        // Check if the list is empty and update the UI accordingly
         checkIfEmpty();
 
-        // Handle item click in the ListView
-        bookmarkListView.setOnItemClickListener((AdapterView<?> parent, View itemView, int position, long id) -> {
-            String articleUrl = bookmarks.get(position); // Get the article URL
-            String articleTitle = getArticleTitleFromUrl(articleUrl); // Extract the article title
-
-
+        // Thiết lập sự kiện nhấp vào bookmark
+        bookmarkAdapter.setOnItemClickListener(bookmark -> {
+            openArticleFragment(bookmark); // Mở ArticleFragment khi nhấn vào bookmark
         });
 
-        // Handle click for the "Clear Bookmarks" button
-        clearBookmarksButton.setOnClickListener(v -> {
-            bookmarksManager.clearBookmarks(); // Clear all bookmarks
-            bookmarks.clear(); // Clear the list
-            bookmarkAdapter.notifyDataSetChanged(); // Update adapter
-            checkIfEmpty(); // Update empty view
-            Toast.makeText(getContext(), "Bookmarks cleared", Toast.LENGTH_SHORT).show();
-        });
-
-        // Handle click for the "Back to Home" button
-        backToHomeButton.setOnClickListener(v -> {
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-            // Pop all fragments from the back stack
-            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-            // Replace current fragment with SearchFragment
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, new SearchFragment())
-                    .commit();
-
-
+        clearButton.setOnClickListener(v -> {
+            if (!bookmarks.isEmpty()) {
+                bookmarks.clear();
+                saveBookmarks();
+                bookmarkAdapter.notifyDataSetChanged();
+                checkIfEmpty();
+                Toast.makeText(getContext(), "All bookmarks cleared", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getContext(), "No bookmarks to clear", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
-    /**
-     * Helper method to get the article title from its URL.
-     *
-     * @param url The article URL.
-     * @return The article title.
-     */
-    private String getArticleTitleFromUrl(String url) {
-        if (url.contains("/wiki/")) {
-            return url.substring(url.lastIndexOf("/wiki/") + 6).replace("_", " ");
-        }
-        return url;
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadBookmarks();  // Tải lại bookmark từ SharedPreferences
+        bookmarkAdapter.notifyDataSetChanged();  // Cập nhật lại giao diện
+        checkIfEmpty();  // Kiểm tra xem danh sách bookmark có trống không
     }
 
-    /**
-     * Helper method to check if the bookmarks list is empty and update the UI accordingly.
-     */
+    private void loadBookmarks() {
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        Set<String> bookmarkSet = sharedPreferences.getStringSet(BOOKMARKS_KEY, new HashSet<>());
+        bookmarks.clear();
+        bookmarks.addAll(bookmarkSet);
+    }
+
+    private void saveBookmarks() {
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putStringSet(BOOKMARKS_KEY, new HashSet<>(bookmarks));
+        editor.apply();
+    }
+
     private void checkIfEmpty() {
         if (bookmarks.isEmpty()) {
-            emptyView.setVisibility(View.VISIBLE); // Show empty view
-            bookmarkListView.setVisibility(View.GONE); // Hide ListView
+            bookmarkRecyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
         } else {
-            emptyView.setVisibility(View.GONE); // Hide empty view
-            bookmarkListView.setVisibility(View.VISIBLE); // Show ListView
+            bookmarkRecyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
         }
+    }
+
+    // Mở ArticleFragment với URL của bài viết được nhấn vào
+    private void openArticleFragment(String bookmarkUrl) {
+        ArticleFragment articleFragment = ArticleFragment.newInstance("Bookmark Article", bookmarkUrl);
+        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, articleFragment);
+        transaction.addToBackStack(null); // Cho phép quay lại
+        transaction.commit();
+    }
+
+    @Override
+    public void onDelete(String bookmark) {
+        bookmarks.remove(bookmark);
+        saveBookmarks();
+        bookmarkAdapter.notifyDataSetChanged();
+        checkIfEmpty();
+        Toast.makeText(getContext(), "Bookmark removed", Toast.LENGTH_SHORT).show();
     }
 }

@@ -3,6 +3,7 @@ package vn.edu.usth.wikipedia.fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,16 +25,17 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
 import vn.edu.usth.wikipedia.adapters.SearchResultsAdapter;
 
@@ -61,11 +63,11 @@ public class SearchFragment extends Fragment {
 
         searchResults = new ArrayList<>();
         adapter = new SearchResultsAdapter(searchResults, result -> {
-            if (getActivity() instanceof MainActivity) {
-                String title = result.get("title");
-                String url = result.get("url");
-            }
+            String title = result.get("title");
+            String url = result.get("url");
+            openArticleFragment(title, url);
         });
+
         searchResultsRecyclerView.setAdapter(adapter);
         searchResultsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -80,7 +82,16 @@ public class SearchFragment extends Fragment {
         }
 
         String languageCode = getLanguagePreference();
-        String url = "https://" + languageCode + ".wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=" + URLEncoder.encode(query, StandardCharsets.UTF_8);
+        String url;
+        try {
+            String encodedQuery = URLEncoder.encode(query, StandardCharsets.UTF_8.toString());
+            url = "https://" + languageCode + ".wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch="
+                    + encodedQuery;
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Encoding error", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
@@ -88,7 +99,8 @@ public class SearchFragment extends Fragment {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                requireActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Search failed", Toast.LENGTH_SHORT).show());
+                requireActivity().runOnUiThread(() ->
+                        Toast.makeText(getContext(), "Search failed", Toast.LENGTH_SHORT).show());
             }
 
             @Override
@@ -98,7 +110,8 @@ public class SearchFragment extends Fragment {
                 String responseData = response.body().string();
                 Gson gson = new Gson();
                 JsonObject jsonObject = gson.fromJson(responseData, JsonObject.class);
-                JsonArray searchResultsArray = jsonObject.getAsJsonObject("query").getAsJsonArray("search");
+                JsonObject queryObject = jsonObject.getAsJsonObject("query");
+                JsonArray searchResultsArray = queryObject.getAsJsonArray("search");
 
                 List<Map<String, String>> results = new ArrayList<>();
                 for (int i = 0; i < searchResultsArray.size(); i++) {
@@ -106,10 +119,13 @@ public class SearchFragment extends Fragment {
                     Map<String, String> result = new HashMap<>();
                     result.put("title", item.get("title").getAsString());
                     result.put("snippet", item.get("snippet").getAsString());
-                    // Construct the full URL for the article
+
                     String articleTitle = item.get("title").getAsString();
-                    String encodedTitle = URLEncoder.encode(articleTitle, StandardCharsets.UTF_8);
-                    String articleUrl = "https://" + languageCode + ".wikipedia.org/wiki/" + encodedTitle;
+                    String encodedTitle = URLEncoder.encode(articleTitle, StandardCharsets.UTF_8.toString());
+
+                    String articleUrl = "https://" + languageCode + ".wikipedia.org/wiki/"
+                            + encodedTitle.replace("+", "_");
+
                     result.put("url", articleUrl);
                     results.add(result);
                 }
@@ -121,6 +137,29 @@ public class SearchFragment extends Fragment {
                 });
             }
         });
+    }
+
+    private void openArticleFragment(String title, String url) {
+        Log.d("SearchFragment", "Adding URL to history: " + url);
+
+        saveToHistory(url); // Save directly to SharedPreferences
+
+        Fragment articleFragment = ArticleFragment.newInstance(title, url);
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, articleFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private void saveToHistory(String url) {
+        SharedPreferences prefs = requireActivity().getSharedPreferences("user_history", Context.MODE_PRIVATE);
+        Set<String> history = new HashSet<>(prefs.getStringSet("history", new HashSet<>()));
+        history.add(url);
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putStringSet("history", history);
+        editor.apply();
     }
 
     private String getLanguagePreference() {
