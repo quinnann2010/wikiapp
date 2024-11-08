@@ -15,13 +15,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-<<<<<<< HEAD
 import java.util.Locale;
-
 import vn.edu.usth.wikipedia.MainActivity;
-=======
->>>>>>> 379b9e3ce88c3743090609deacb69a5b9595535c
+
 import vn.edu.usth.wikipedia.R;
 
 public class LanguageFragment extends Fragment {
