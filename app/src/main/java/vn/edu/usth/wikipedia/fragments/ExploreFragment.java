@@ -70,7 +70,7 @@ public class ExploreFragment extends Fragment {
     private void loadExploreContent() {
 
         // Repeat for 5 days to get featured articles
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i <= 6; i++) {
             String date = getDateForDaysAgo(i); // Get date for 'daysAgo'
             String url = "https://api.wikimedia.org/feed/v1/wikipedia/en/featured/" + date; // Build URL
 
