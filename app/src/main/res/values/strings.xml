@@ -56,6 +56,27 @@
     <string name="back_to_explore">Back to Explore</string>
     <string name="show_article">Show Article</string>
     <string name="delete_bookmark">Delete bookmark\n</string>
+    <string name="select_language">Select language</string>
+    <string name="back_to_setting">Back to Setting</string>
+    <string name="guest">Guest</string>
+    <string name="account_information">Account Information</string>
+    <string name="phone">Phone:</string>
+    <string name="gender">Gender:</string>
+    <string name="register">Register</string>
+    <string name="save_profile">Save Profile</string>
+    <string name="donation_amount">Donation Amount</string>
+    <string name="choose_your_payment_method">Choose Your Payment Method</string>
+    <string name="binance_payment">Binance Payment</string>
+    <string name="binance">Binance</string>
+    <string name="mastercard_payment">MasterCard Payment</string>
+    <string name="mastercard">MasterCard</string>
+    <string name="stripe_payment">Stripe Payment</string>
+    <string name="stripe">Stripe</string>
+    <string name="paypal_payment">PayPal Payment</string>
+    <string name="paypal">Paypal</string>
+    <string name="applepay_payment">ApplePay Payment</string>
+    <string name="apple_pay">Apple Pay</string>
+    <string name="payment">Payment</string>
     <!-- Language options -->
     <string-array name="language_array">
         <item>English</item>

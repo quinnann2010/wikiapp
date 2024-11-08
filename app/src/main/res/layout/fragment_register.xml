@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_nav"
     android:orientation="vertical">
@@ -38,74 +38,65 @@
             app:tint="@color/grey" />
     </RelativeLayout>
 
-
-    <!-- Username Input -->
     <EditText
         android:id="@+id/username_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username" />
+        android:hint="@string/username" />
 
-    <!-- Password Input -->
     <EditText
         android:id="@+id/password_input"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
-    <!-- Email Input -->
     <EditText
         android:id="@+id/email_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress" />
 
-    <!-- Date of Birth -->
     <TextView
         android:layout_width="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_height="wrap_content"
-        android:text="Date of Birth"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/date_of_birth"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+        android:textStyle="bold" />
 
-    <!-- Date of Birth: Day, Month, Year -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp">
+        android:orientation="horizontal">
 
-        <!-- Date of Birth: Day Spinner -->
         <Spinner
             android:id="@+id/day_spinner"
-            android:layout_width="0dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="4dp"/>
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1" />
 
-        <!-- Date of Birth: Month Spinner -->
         <Spinner
             android:id="@+id/month_spinner"
-            android:layout_width="0dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="4dp"/>
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1" />
 
-        <!-- Date of Birth: Year Input -->
         <EditText
             android:id="@+id/year_input"
             android:layout_width="0dp"
@@ -115,32 +106,39 @@
             android:inputType="number" />
     </LinearLayout>
 
-    <!-- Phone Number Input -->
     <EditText
         android:id="@+id/phone_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="Phone Number"
+        android:hint="@string/phone"
         android:inputType="phone" />
 
-    <!-- Gender Spinner -->
-    <Spinner
-        android:id="@+id/gender_spinner"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <!-- Register Button -->
-    <Button
-        android:id="@+id/register_button"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/grey"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_marginTop="16dp" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/gender"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/gender_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/grey"
+        android:text="@string/register" />
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package vn.edu.usth.wikipedia.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
 import vn.edu.usth.wikipedia.PaymentActivity; // Import the payment screen
 
@@ -52,7 +55,7 @@ public class DonateFragment extends Fragment {
             }
         });
 
-        Button backButton = view.findViewById(R.id.back_to_main_button); // Initialize back button
+//        Button backButton = view.findViewById(R.id.back_to_main_button); // Initialize back button
 
 
         // Show custom donation input field when "Custom Amount" is selected
@@ -111,12 +114,12 @@ public class DonateFragment extends Fragment {
         startActivity(intent);
 
         // Handle back to main page
-        backButton.setOnClickListener(v -> {
-            // Replace current fragment with SearchFragment and show main page
-            requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new SearchFragment())
-                    .commit();
-        });
+//        backButton.setOnClickListener(v -> {
+//            // Replace current fragment with SearchFragment and show main page
+//            requireActivity().getSupportFragmentManager().beginTransaction()
+//                    .replace(R.id.fragment_container, new SearchFragment())
+//                    .commit();
+//        });
 
     }
 }

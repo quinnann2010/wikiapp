@@ -1,36 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
+    android:background="#F5F5F5"
     android:gravity="center_horizontal"
-    android:background="#F5F5F5">
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/setting_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="50dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/payment"
+            android:gravity="center_vertical"
+            android:text="@string/payment"
+            android:textColor="@color/grey"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/close_payment_button"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/close"
+            android:src="@drawable/close_button"
+            app:tint="@color/grey" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/donation_amount_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Donation Amount"
-        android:textSize="20sp"
-        android:textColor="#333333"
         android:layout_gravity="center_horizontal"
-        android:paddingBottom="24dp" />
+        android:layout_marginTop="20dp"
+        android:paddingBottom="24dp"
+        android:text="@string/donation_amount"
+        android:textColor="#333333"
+        android:textSize="20sp" />
 
-    <!-- Title -->
     <TextView
         android:id="@+id/payment_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose Your Payment Method"
-        android:textSize="22sp"
-        android:textStyle="bold"
+        android:paddingBottom="20dp"
+        android:text="@string/choose_your_payment_method"
         android:textColor="#333333"
-        android:paddingBottom="20dp" />
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
-    <!-- Payment Options in CardViews -->
-    <!-- Repeat the CardView style for each payment option -->
-    <!-- Payment Option: Binance -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,24 +71,24 @@
             android:id="@+id/binance_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="12dp"
             android:gravity="center_vertical"
-            android:onClick="onPaymentMethodClick">
+            android:onClick="onPaymentMethodClick"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/binance_icon"
-                android:contentDescription="Binance Payment" />
+                android:contentDescription="@string/binance_payment"
+                android:src="@drawable/binance_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Binance"
-                android:textSize="18sp"
                 android:layout_marginStart="16dp"
-                android:textColor="#666666" />
+                android:text="@string/binance"
+                android:textColor="#666666"
+                android:textSize="18sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -72,24 +102,24 @@
             android:id="@+id/mastercard_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="12dp"
             android:gravity="center_vertical"
-            android:onClick="onPaymentMethodClick">
+            android:onClick="onPaymentMethodClick"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/mastercard_icon"
-                android:contentDescription="MasterCard Payment" />
+                android:contentDescription="@string/mastercard_payment"
+                android:src="@drawable/mastercard_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MasterCard"
-                android:textSize="18sp"
                 android:layout_marginStart="16dp"
-                android:textColor="#666666" />
+                android:text="@string/mastercard"
+                android:textColor="#666666"
+                android:textSize="18sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -103,24 +133,24 @@
             android:id="@+id/stripe_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="12dp"
             android:gravity="center_vertical"
-            android:onClick="onPaymentMethodClick">
+            android:onClick="onPaymentMethodClick"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/stripe_icon"
-                android:contentDescription="Stripe Payment" />
+                android:contentDescription="@string/stripe_payment"
+                android:src="@drawable/stripe_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stripe"
-                android:textSize="18sp"
                 android:layout_marginStart="16dp"
-                android:textColor="#666666" />
+                android:text="@string/stripe"
+                android:textColor="#666666"
+                android:textSize="18sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -134,24 +164,24 @@
             android:id="@+id/paypal_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="12dp"
             android:gravity="center_vertical"
-            android:onClick="onPaymentMethodClick">
+            android:onClick="onPaymentMethodClick"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/paypal_icon"
-                android:contentDescription="PayPal Payment" />
+                android:contentDescription="@string/paypal_payment"
+                android:src="@drawable/paypal_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Paypal"
-                android:textSize="18sp"
                 android:layout_marginStart="16dp"
-                android:textColor="#666666" />
+                android:text="@string/paypal"
+                android:textColor="#666666"
+                android:textSize="18sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -165,28 +195,25 @@
             android:id="@+id/applepay_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="12dp"
             android:gravity="center_vertical"
-            android:onClick="onPaymentMethodClick">
+            android:onClick="onPaymentMethodClick"
+            android:orientation="horizontal"
+            android:padding="12dp">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/applepay_icon"
-                android:contentDescription="ApplePay Payment" />
+                android:contentDescription="@string/applepay_payment"
+                android:src="@drawable/applepay_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Apple Pay"
-                android:textSize="18sp"
                 android:layout_marginStart="16dp"
-                android:textColor="#666666" />
+                android:text="@string/apple_pay"
+                android:textColor="#666666"
+                android:textSize="18sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-
-
 </LinearLayout>
 

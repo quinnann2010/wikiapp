@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import vn.edu.usth.wikipedia.R;
+import vn.edu.usth.wikipedia.database.DatabaseHelper;
 
 public class RegisterFragment extends Fragment {
 
@@ -52,20 +53,17 @@ public class RegisterFragment extends Fragment {
         ImageButton backButton = view.findViewById(R.id.close_reg_button);
 
         // Set up Day Spinner
-        ArrayAdapter<CharSequence> dayAdapter = ArrayAdapter.createFromResource(requireContext(),
-                R.array.day_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> dayAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.day_array, android.R.layout.simple_spinner_item);
         dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         daySpinner.setAdapter(dayAdapter);
 
         // Set up Month Spinner
-        ArrayAdapter<CharSequence> monthAdapter = ArrayAdapter.createFromResource(requireContext(),
-                R.array.month_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> monthAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.month_array, android.R.layout.simple_spinner_item);
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         monthSpinner.setAdapter(monthAdapter);
 
         // Set up Gender Spinner
-        ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(requireContext(),
-                R.array.gender_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.gender_array, android.R.layout.simple_spinner_item);
         genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderSpinner.setAdapter(genderAdapter);
 
@@ -77,7 +75,6 @@ public class RegisterFragment extends Fragment {
     }
 
     private void performRegistration() {
-        // Get user input values
         String username = usernameInput.getText().toString();
         String password = passwordInput.getText().toString();
         String email = emailInput.getText().toString();
@@ -86,14 +83,22 @@ public class RegisterFragment extends Fragment {
         String year = yearInput.getText().toString();
         String phone = phoneInput.getText().toString();
         String gender = genderSpinner.getSelectedItem().toString();
+        String dob = day + "-" + month + "-" + year;
 
-        // Validate input
         if (username.isEmpty() || password.isEmpty() || email.isEmpty() || phone.isEmpty() || year.isEmpty()) {
             Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Implement registration logic here (e.g., send data to a server or database)
-        Toast.makeText(getContext(), "Registration successful", Toast.LENGTH_SHORT).show();
+        DatabaseHelper dbHelper = new DatabaseHelper(getContext());
+        boolean success = dbHelper.addUser(username, password, email, phone, gender, dob);
+
+        if (success) {
+            Toast.makeText(getContext(), "Registration successful", Toast.LENGTH_SHORT).show();
+            requireActivity().getSupportFragmentManager().popBackStack();
+        } else {
+            Toast.makeText(getContext(), "Registration failed", Toast.LENGTH_SHORT).show();
+        }
     }
+
 }

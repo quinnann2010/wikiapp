@@ -1,15 +1,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/setting_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/white_nav"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/setting_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="50dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/language"
+            android:gravity="center_vertical"
+            android:text="@string/language"
+            android:textColor="@color/grey"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/close_language_button"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/close"
+            android:src="@drawable/close_button"
+            android:background="@android:color/transparent"
+            app:tint="@color/grey" />
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
-        android:text="Select language"
+        android:text="@string/select_language"
         android:textColor="@color/grey"
         android:textSize="18sp"
         android:textStyle="normal" />
@@ -26,21 +61,14 @@
         android:padding="8dp"
         android:entries="@array/language_array"  />
 
-
-        android:entries="@array/language_array" />
-
     <Button
         android:id="@+id/save_language_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:padding="10dp"
         android:backgroundTint="@color/grey"
         android:text="@string/save_change"
         android:textColor="@color/white"
-        android:elevation="4dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/round_button" 
-        android:text="@string/save_language" />
+        android:layout_marginBottom="20dp"  />
 </LinearLayout>

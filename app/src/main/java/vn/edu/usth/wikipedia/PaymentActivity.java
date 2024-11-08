@@ -1,7 +1,9 @@
 package vn.edu.usth.wikipedia;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,12 @@ public class PaymentActivity extends AppCompatActivity {
         // Show the donation amount on the screen
         TextView donationTextView = findViewById(R.id.donation_amount_text);
         donationTextView.setText("You are donating: " + donationAmount);
+
+        ImageButton closeButton = findViewById(R.id.close_payment_button);
+        closeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(PaymentActivity.this, SettingActivity.class);
+            startActivity(intent);
+        });
     }
 
     public void onPaymentMethodClick(View view) {

@@ -56,10 +56,38 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:background="@color/white">
+            <ImageButton
+                android:id="@+id/user_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/login"
+                android:src="@drawable/user_icon"
+                android:background="@android:color/transparent"
+                app:tint="@color/light_grey" />
+
+            <TextView
+                android:id="@+id/username_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/guest"
+                android:textStyle="italic"
+                android:textSize="25sp"
+                android:gravity="center|start"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
             <ImageButton
                 android:id="@+id/login_button"
-                android:layout_width="wrap_content"
+                android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:backgroundTint="@color/white"
                 android:contentDescription="@string/login"
@@ -87,7 +115,7 @@
 
             <ImageButton
                 android:id="@+id/donate_button"
-                android:layout_width="wrap_content"
+                android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:backgroundTint="@color/white"
                 android:contentDescription="@string/donate"
@@ -114,7 +142,7 @@
 
             <ImageButton
                 android:id="@+id/language_button"
-                android:layout_width="wrap_content"
+                android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:backgroundTint="@color/white"
                 android:contentDescription="@string/language"
