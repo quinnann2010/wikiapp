@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import vn.edu.usth.wikipedia.R;
@@ -40,6 +42,16 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         holder.titleTextView.setText(article.getTitle());
         holder.descriptionTextView.setText(article.getDescription());
         holder.articleImage.setImageResource(article.getImageResId()); // Ảnh mẫu, thay thế bằng logic tải ảnh thực tế
+
+        if (!article.getImageUrl().isEmpty()) {
+            Picasso.get()
+                    .load(article.getImageUrl()) // Load the image URL
+                    .into(holder.articleImage); // Set it to the ImageView
+        } else {
+            // Optionally set a placeholder image if the URL is empty
+            holder.articleImage.setImageResource(R.drawable.wiki_icon); // Placeholder image resource
+        }
+
 
         holder.itemView.setOnClickListener(v -> onArticleClickListener.onArticleClick(article));
     }

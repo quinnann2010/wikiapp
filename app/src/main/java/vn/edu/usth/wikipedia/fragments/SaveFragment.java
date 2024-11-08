@@ -92,7 +92,8 @@ public class SaveFragment extends Fragment {
                 String title = savedArticlesManager.getArticleTitle(url);
                 String description ="Description is not exist";
                 int imageResId = R.drawable.wiki_icon;
-                articles.add(new Article(title,description, url, imageResId));
+                String imageUrl = "";
+                articles.add(new Article(title,description, url, imageResId, imageUrl));
             }
         }
         return articles;

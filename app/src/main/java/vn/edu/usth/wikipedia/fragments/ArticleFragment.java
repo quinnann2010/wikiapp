@@ -76,6 +76,8 @@ public class ArticleFragment extends Fragment {
             }
 
             Log.d("ArticleFragment", "Loading URL: " + articleUrl);
+
+            addToHistory(articleUrl);
         }
 
         webView = view.findViewById(R.id.article_webview);
@@ -83,26 +85,15 @@ public class ArticleFragment extends Fragment {
         ImageButton bookmarkButton = view.findViewById(R.id.bookmark_button);
         progressBar = view.findViewById(R.id.progress_bar);
 
-        // Initialize the bookmarks set (in-memory for the session)
         bookmarksSet = new HashSet<>();
-        loadBookmarks(); // Load bookmarks from persistent storage (if any)
+        loadBookmarks();
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(articleUrl);
 
-        // Add the current article URL to history
-        // historyManager.addToHistory(articleUrl); // This logic remains unchanged
-
-        if (articleUrl != null) {
-            webView.loadUrl(articleUrl);
-        } else {
-            Toast.makeText(getContext(), "Cannot load URL", Toast.LENGTH_SHORT).show();
-        }
-
         backButton.setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
 
-        // Update the bookmark button based on whether the article is bookmarked
         updateBookmarkButtonState(bookmarkButton);
 
         bookmarkButton.setOnClickListener(v -> {
@@ -116,6 +107,17 @@ public class ArticleFragment extends Fragment {
             updateBookmarkButtonState(bookmarkButton);
         });
     }
+
+    private void addToHistory(String url) {
+        SharedPreferences prefs = requireActivity().getSharedPreferences("user_history", Context.MODE_PRIVATE);
+        Set<String> history = new HashSet<>(prefs.getStringSet("history", new HashSet<>()));
+        history.add(url);
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putStringSet("history", history);
+        editor.apply();
+    }
+
 
     // Method to check if the article URL is bookmarked
     private boolean isBookmarked(String url) {
