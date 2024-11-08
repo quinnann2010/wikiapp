@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:id="@+id/donation_amount_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Donation Amount"
+        android:textSize="20sp"
+        android:textColor="#333333"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="24dp" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/payment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Your Payment Method"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:paddingBottom="20dp" />
+
+    <!-- Payment Options in CardViews -->
+    <!-- Repeat the CardView style for each payment option -->
+    <!-- Payment Option: Binance -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#FFFFFF">
+
+        <LinearLayout
+            android:id="@+id/binance_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:onClick="onPaymentMethodClick">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/binance_icon"
+                android:contentDescription="Binance Payment" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Binance"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:textColor="#666666" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#FFFFFF">
+
+        <LinearLayout
+            android:id="@+id/mastercard_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:onClick="onPaymentMethodClick">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/mastercard_icon"
+                android:contentDescription="MasterCard Payment" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MasterCard"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:textColor="#666666" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#FFFFFF">
+
+        <LinearLayout
+            android:id="@+id/stripe_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:onClick="onPaymentMethodClick">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/stripe_icon"
+                android:contentDescription="Stripe Payment" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stripe"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:textColor="#666666" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#FFFFFF">
+
+        <LinearLayout
+            android:id="@+id/paypal_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:onClick="onPaymentMethodClick">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/paypal_icon"
+                android:contentDescription="PayPal Payment" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paypal"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:textColor="#666666" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#FFFFFF">
+
+        <LinearLayout
+            android:id="@+id/applepay_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:onClick="onPaymentMethodClick">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/applepay_icon"
+                android:contentDescription="ApplePay Payment" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apple Pay"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:textColor="#666666" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>
+

@@ -2,6 +2,7 @@ package vn.edu.usth.wikipedia.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
+import vn.edu.usth.wikipedia.PaymentActivity; // Import the payment screen
 
 /**
  * Fragment for handling donations.
@@ -46,7 +48,7 @@ public class DonateFragment extends Fragment {
         closeDonate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start the new activity
+                // Close and return to main activity
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
@@ -63,23 +65,47 @@ public class DonateFragment extends Fragment {
 
         donateButton.setOnClickListener(v -> {
             int selectedId = donationAmountGroup.getCheckedRadioButtonId(); // Get selected RadioButton ID
-            String donationAmount;
+            String donationAmount = "";
 
             if (selectedId == R.id.donate_custom) {
                 donationAmount = customDonationInput.getText().toString().trim(); // Get custom donation amount
-                if (donationAmount.isEmpty()) {
+
+                // Input validation for custom amount
+                if (TextUtils.isEmpty(donationAmount)) {
                     Toast.makeText(getContext(), "Please enter a custom amount", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                if (!isValidDonationAmount(donationAmount)) {
+                    Toast.makeText(getContext(), "Please enter a valid amount greater than zero", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
             } else {
-                RadioButton selectedButton = view.findViewById(selectedId); // Get selected RadioButton
-                donationAmount = selectedButton.getText().toString(); // Get amount from RadioButton
+                // Get amount from the selected RadioButton
+                RadioButton selectedButton = view.findViewById(selectedId);
+                donationAmount = selectedButton.getText().toString();
             }
 
-            // Implement donation functionality here
-            Toast.makeText(getContext(), "Donating " + donationAmount, Toast.LENGTH_SHORT).show(); // Show donation amount
+            // Proceed to payment method screen with the donation amount
+            proceedToPayment(donationAmount);
         });
+    }
 
-        // Handle back to main page
+    // Helper method to check if the donation amount is valid
+    private boolean isValidDonationAmount(String amount) {
+        try {
+            double donation = Double.parseDouble(amount);
+            return donation > 0; // Amount must be greater than zero
+        } catch (NumberFormatException e) {
+            return false; // Not a valid number
+        }
+    }
+
+    // Method to proceed to the payment method screen
+    private void proceedToPayment(String donationAmount) {
+        Intent intent = new Intent(getActivity(), PaymentActivity.class); // Navigate to payment screen
+        intent.putExtra("donationAmount", donationAmount); // Pass the donation amount
+        startActivity(intent);
     }
 }

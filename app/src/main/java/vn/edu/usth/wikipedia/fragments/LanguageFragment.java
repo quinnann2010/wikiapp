@@ -2,6 +2,8 @@ package vn.edu.usth.wikipedia.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.Locale;
+
 import vn.edu.usth.wikipedia.MainActivity;
 import vn.edu.usth.wikipedia.R;
 
@@ -26,7 +30,7 @@ public class LanguageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the layout for t     his fragment
         return inflater.inflate(R.layout.fragment_language, container, false);
     }
 
@@ -69,37 +73,31 @@ public class LanguageFragment extends Fragment {
         editor.putString("language_code", languageCode);
         editor.apply();
 
-        handleNavigationAfterLanguageChange();
+        // Restart the MainActivity to apply changes
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+
+        // Finish the SettingActivity
+        requireActivity().finish();
     }
 
-    private void handleNavigationAfterLanguageChange() {
-        // Determine the current fragment and navigate accordingly
-        Fragment previousFragment = requireActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
-        if (previousFragment instanceof ArticleFragment) {
-            String currentArticleUrl = ((ArticleFragment) previousFragment).getArticleUrl();
-            loadArticleInSelectedLanguage(currentArticleUrl);
-        } else {
-            navigateToHomepage();
-        }
+    private void setLocale(String languageCode) {
+        // Set the locale and update the configuration
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+
+        Resources resources = getResources();
+        Configuration config = new Configuration();
+        config.locale = locale;
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
+
+        // Optionally, recreate the activity to apply the language change
+        requireActivity().recreate();
     }
 
-    private void loadArticleInSelectedLanguage(String url) {
-        // Convert the URL to the new language and load the article
-        String newUrl = convertUrlToNewLanguage(url);
 
-        if (newUrl == null) {
-            Toast.makeText(getContext(), "This article is not available in your language", Toast.LENGTH_SHORT).show();
-            navigateToHomepage();
-        } else {
-            // Create and load the ArticleFragment with the new URL
-            ArticleFragment newArticleFragment = ArticleFragment.newInstance("Article Title", newUrl); // Replace "Article Title" with actual title if available
-            requireActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, newArticleFragment)
-                    .addToBackStack(null)
-                    .commit();
-        }
-    }
 
     private void navigateToHomepage() {
         // Navigate back to the homepage (assuming SearchFragment is the homepage)
@@ -108,14 +106,6 @@ public class LanguageFragment extends Fragment {
                 .commit();
     }
 
-    private String convertUrlToNewLanguage(String url) {
-        // Convert the URL to reflect the selected language
-        String languageCode = getLanguageCodeFromLanguage(languageSpinner.getSelectedItem().toString());
-        String newUrl = url.replace("en", languageCode); // Replace "en" with the language code
-
-        // Implement actual URL verification logic if necessary
-        return newUrl; // Return null if the article is not available in the new language
-    }
 
     private String getLanguageCodeFromLanguage(String language) {
         // Map language names to their corresponding language codes
