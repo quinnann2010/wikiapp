@@ -77,6 +77,9 @@
     <string name="applepay_payment">ApplePay Payment</string>
     <string name="apple_pay">Apple Pay</string>
     <string name="payment">Payment</string>
+    <string name="new_password">New Password:</string>
+    <string name="delete_history">Delete history</string>
+    <string name="history_title">History Title</string>
     <!-- Language options -->
     <string-array name="language_array">
         <item>English</item>

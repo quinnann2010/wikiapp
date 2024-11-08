@@ -66,4 +66,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_USERS + " WHERE " + COLUMN_USERNAME + "=?";
         return db.rawQuery(query, new String[]{username});
     }
+
+    public boolean resetPassword(String email, String newPassword) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PASSWORD, newPassword);
+
+        int rows = db.update(TABLE_USERS, values, COLUMN_EMAIL + "=?", new String[]{email});
+        db.close();
+        return rows > 0; // Return true if the password was updated
+    }
 }
