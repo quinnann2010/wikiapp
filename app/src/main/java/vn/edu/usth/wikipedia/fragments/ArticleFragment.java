@@ -37,7 +37,7 @@ public class ArticleFragment extends Fragment {
     private String articleUrl;
     private WebView webView;
     private ProgressBar progressBar;
-    private Set<String> bookmarksSet; // Replaced BookmarksManager with a Set
+    private Set<String> bookmarksSet; 
 
     public static ArticleFragment newInstance(String title, String url) {
         ArticleFragment fragment = new ArticleFragment();
@@ -127,13 +127,13 @@ public class ArticleFragment extends Fragment {
     // Method to add the article URL to the bookmark set
     private void addBookmark(String url) {
         bookmarksSet.add(url);
-        saveBookmarks(); // Persist bookmarks
+        saveBookmarks(); 
     }
 
     // Method to remove the article URL from the bookmark set
     private void removeBookmark(String url) {
         bookmarksSet.remove(url);
-        saveBookmarks(); // Persist bookmarks
+        saveBookmarks(); 
     }
 
     // Method to update the bookmark button based on whether the article is bookmarked
