@@ -56,10 +56,8 @@ public class AccountInfoFragment extends Fragment {
 
         dbHelper = new DatabaseHelper(getContext());
 
-        // Retrieve logged-in username from shared preferences
         String username = requireActivity().getSharedPreferences("user_prefs", requireContext().MODE_PRIVATE).getString("username", "Guest");
 
-        // Fetch user information from database
         loadUserInfo(username);
     }
 

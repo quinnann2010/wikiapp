@@ -16,7 +16,6 @@ public class HistoryAdapter extends ArrayAdapter<String> {
 
     private final OnDeleteClickListener onDeleteClickListener;
 
-    // Interface for handling delete events
     public interface OnDeleteClickListener {
         void onDeleteClick(String historyItem);
     }
@@ -33,15 +32,14 @@ public class HistoryAdapter extends ArrayAdapter<String> {
         }
 
         TextView historyTitle = convertView.findViewById(R.id.history_title);
-        Button deleteButton = convertView.findViewById(R.id.delete_button); // Add delete button
+        Button deleteButton = convertView.findViewById(R.id.delete_button);
 
         String historyItem = getItem(position);
         historyTitle.setText(historyItem);
 
-        // Handle the click event when the delete button is pressed
         deleteButton.setOnClickListener(v -> {
             if (onDeleteClickListener != null) {
-                onDeleteClickListener.onDeleteClick(historyItem);  // Call listener when delete is pressed
+                onDeleteClickListener.onDeleteClick(historyItem);
             }
         });
 

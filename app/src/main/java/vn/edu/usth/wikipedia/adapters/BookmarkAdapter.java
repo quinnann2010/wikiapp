@@ -53,9 +53,9 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         holder.deleteButton.setOnClickListener(v -> {
             if (deleteListener != null) {
                 deleteListener.onDelete(bookmark);
-                bookmarks.remove(position); // Xóa bookmark khỏi danh sách
-                notifyItemRemoved(position); // Cập nhật RecyclerView
-                notifyItemRangeChanged(position, bookmarks.size()); // Cập nhật các vị trí còn lại
+                bookmarks.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, bookmarks.size());
             }
         });
 

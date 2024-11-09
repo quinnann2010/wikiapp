@@ -37,7 +37,6 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize views and preferences
         usernameEditText = view.findViewById(R.id.username_edit_text);
         passwordEditText = view.findViewById(R.id.password_edit_text);
         Button loginButton = view.findViewById(R.id.login_button);
@@ -69,7 +68,6 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        // Set up the click listener for the login button
         loginButton.setOnClickListener(v -> loginUser());
     }
 
@@ -94,11 +92,9 @@ public class LoginFragment extends Fragment {
             editor.putString("username", username);
             editor.apply();
 
-            // Open SettingActivity
             Intent intent = new Intent(getActivity(), SettingActivity.class);
             startActivity(intent);
 
-            // Close the LoginFragment
             requireActivity().finish();
 
         } else {

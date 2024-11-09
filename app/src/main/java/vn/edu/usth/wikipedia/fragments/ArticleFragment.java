@@ -7,12 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,11 +30,9 @@ public class ArticleFragment extends Fragment {
     private static final String ARG_URL = "url";
     private static final String PREFS_NAME = "bookmarksPrefs";
     private static final String BOOKMARKS_KEY = "bookmarks";
-    private String articleTitle;
     private String articleUrl;
     private WebView webView;
-    private ProgressBar progressBar;
-    private Set<String> bookmarksSet; 
+    private Set<String> bookmarksSet;
 
     public static ArticleFragment newInstance(String title, String url) {
         ArticleFragment fragment = new ArticleFragment();
@@ -66,7 +61,6 @@ public class ArticleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         if (getArguments() != null) {
-            articleTitle = getArguments().getString(ARG_TITLE);
             articleUrl = getArguments().getString(ARG_URL);
 
             try {
@@ -83,7 +77,6 @@ public class ArticleFragment extends Fragment {
         webView = view.findViewById(R.id.article_webview);
         ImageButton backButton = view.findViewById(R.id.back_button);
         ImageButton bookmarkButton = view.findViewById(R.id.bookmark_button);
-        progressBar = view.findViewById(R.id.progress_bar);
 
         bookmarksSet = new HashSet<>();
         loadBookmarks();
@@ -119,24 +112,20 @@ public class ArticleFragment extends Fragment {
     }
 
 
-    // Method to check if the article URL is bookmarked
     private boolean isBookmarked(String url) {
         return bookmarksSet.contains(url);
     }
 
-    // Method to add the article URL to the bookmark set
     private void addBookmark(String url) {
         bookmarksSet.add(url);
-        saveBookmarks(); 
+        saveBookmarks();
     }
 
-    // Method to remove the article URL from the bookmark set
     private void removeBookmark(String url) {
         bookmarksSet.remove(url);
-        saveBookmarks(); 
+        saveBookmarks();
     }
 
-    // Method to update the bookmark button based on whether the article is bookmarked
     private void updateBookmarkButtonState(ImageButton bookmarkButton) {
         if (isBookmarked(articleUrl)) {
             bookmarkButton.setImageResource(R.drawable.ic_bookmark_filled);
@@ -145,13 +134,11 @@ public class ArticleFragment extends Fragment {
         }
     }
 
-    // Load bookmarks
     private void loadBookmarks() {
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         bookmarksSet = sharedPreferences.getStringSet(BOOKMARKS_KEY, new HashSet<>());
     }
 
-    // Save bookmarks to persistent storage
     private void saveBookmarks() {
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

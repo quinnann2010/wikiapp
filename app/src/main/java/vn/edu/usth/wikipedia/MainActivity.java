@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        // Load the saved language
         SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
         String languageCode = prefs.getString("language_code", "en"); // Default to English
         setLocale(languageCode);

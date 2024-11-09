@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +20,7 @@ import java.util.Locale;
 import vn.edu.usth.wikipedia.MainActivity;
 
 import vn.edu.usth.wikipedia.R;
+import vn.edu.usth.wikipedia.SettingActivity;
 
 public class LanguageFragment extends Fragment {
 
@@ -36,22 +36,27 @@ public class LanguageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize the spinner and button
         languageSpinner = view.findViewById(R.id.language_spinner);
         Button saveLanguageButton = view.findViewById(R.id.save_language_button);
 
-        // Set up the spinner with language options
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.language_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         languageSpinner.setAdapter(adapter);
 
-        // Set up click listener for the save button
         saveLanguageButton.setOnClickListener(v -> saveLanguagePreference());
+
+        ImageButton closeLanguage = view.findViewById(R.id.close_language_button);
+        closeLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void saveLanguagePreference() {
-        // Save the selected language to SharedPreferences
         String selectedLanguage = languageSpinner.getSelectedItem().toString();
         String languageCode = getLanguageCodeFromLanguage(selectedLanguage);
 
@@ -60,18 +65,15 @@ public class LanguageFragment extends Fragment {
         editor.putString("language_code", languageCode);
         editor.apply();
 
-        // Restart the MainActivity to apply changes
         Intent intent = new Intent(getActivity(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
 
-        // Finish the SettingActivity
         requireActivity().finish();
     }
 
 
     private void setLocale(String languageCode) {
-        // Set the locale and update the configuration
         Locale locale = new Locale(languageCode);
         Locale.setDefault(locale);
 
@@ -80,14 +82,12 @@ public class LanguageFragment extends Fragment {
         config.locale = locale;
         resources.updateConfiguration(config, resources.getDisplayMetrics());
 
-        // Optionally, recreate the activity to apply the language change
         requireActivity().recreate();
     }
 
 
 
     private void navigateToHomepage() {
-        // Navigate back to the homepage (assuming SearchFragment is the homepage)
         requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new SearchFragment())
                 .commit();
@@ -95,7 +95,6 @@ public class LanguageFragment extends Fragment {
 
 
     private String getLanguageCodeFromLanguage(String language) {
-        // Map language names to their corresponding language codes
         switch (language) {
             case "Tiếng Việt": return "vi";
             case "Français": return "fr";
@@ -109,17 +108,15 @@ public class LanguageFragment extends Fragment {
             case "Русский": return "ru";
             case "عربى": return "ar";
             case "Türkçe": return "tr";
-            case "Polski": return "pl";
             case "ไทย": return "th";
-            case "Swedish": return "sv";
             case "Danish": return "da";
             case "Norsk": return "no";
             case "Finnish": return "fi";
             case "Hrvatski": return "hr";
             case "Slovenský": return "sk";
-            case "Magyar": return "hu";
+
             case "English": return "en";
-            default: return "en"; // Default to English if not found
+            default: return "en";
         }
     }
 }

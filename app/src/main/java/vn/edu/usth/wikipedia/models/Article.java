@@ -1,9 +1,7 @@
 package vn.edu.usth.wikipedia.models;
 
 public class Article {
-    // URL of the article
     private final String url;
-    // Title of the article
     private final String title;
     private final String description;
     private final int imageResId;

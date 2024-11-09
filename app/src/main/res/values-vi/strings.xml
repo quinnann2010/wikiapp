@@ -1,0 +1,165 @@
+<resources>
+    <string name="app_name">Wikipedia</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Xin chào mảnh trống</string>
+    <string name="search_wikipedia">Tìm kiếm Wikipedia</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="clear_history">Xóa lịch sử</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="history">Lịch sử</string>
+    <string name="bookmark">Đánh dấu</string>
+    <string name="donate">Quyên tặng</string>
+    <string name="login">Đăng nhập</string>
+    <string name="search_term">Cụm từ tìm kiếm</string>
+    <string name="go_back">Quay lại trang chính\n</string>
+    <string name="save_language">Lưu ngôn ngữ</string>
+    <string name="more">Thêm\n</string>
+    <string name="this_is_the_save_fragment">Đây là đoạn lưu</string>
+    <string name="save">Lưu\n</string>
+    <string name="save_article">Lưu bài viết\n</string>
+    <string name="user">người dùng</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="explore">Khám phá</string>
+    <string name="saved">Đã lưu</string>
+    <string name="setting">Cài đặt</string>
+    <string name="close">Đóng</string>
+    <string name="delete">Xóa bỏ</string>
+    <string name="bookmark_title">Tiêu đề đánh dấu</string>
+    <string name="article_title">Tiêu đề bài viết</string>
+    <string name="empty">Trống</string>
+    <string name="clear_all">Xóa tất cả</string>
+    <string name="forgot_your_password">Bạn quên mật khẩu\?</string>
+    <string name="enter_password">Nhập mật khẩu</string>
+    <string name="password">Mật khẩu:</string>
+    <string name="enter_username">Nhập tên người dùng</string>
+    <string name="username">Tên người dùng:</string>
+    <string name="join_wikipedia">Tham gia Wikipedia</string>
+    <string name="don_t_have_an_account">Bạn chưa có tài khoản\?</string>
+    <string name="log_in_to_your_account">Đăng nhập vào tài khoản của bạn</string>
+    <string name="save_change">Lưu thay đổi</string>
+    <string name="choose_your_language">Chọn ngôn ngữ của bạn</string>
+    <string name="custom_amount">Số tiền tùy chỉnh</string>
+    <string name="_20">20$</string>
+    <string name="_10">10$</string>
+    <string name="_5">5$</string>
+    <string name="select_a_donation_amount">Chọn số tiền quyên góp:</string>
+    <string name="search_bar">Thanh tìm kiếm:</string>
+    <string name="enter_some_keywords">Nhập một số từ khóa</string>
+    <string name="edit_profile">Chỉnh sửa hồ sơ</string>
+    <string name="email">E-mail:</string>
+    <string name="date_of_birth">Ngày sinh:</string>
+    <string name="age">Tuổi:</string>
+    <string name="name">Tên:</string>
+    <string name="reset_password">Đặt lại mật khẩu</string>
+    <string name="create_an_account">Tạo một tài khoản</string>
+    <string name="forgot_password">Quên mật khẩu</string>
+    <string name="back_to_explore">Quay lại khám phá</string>
+    <string name="show_article">Hiển thị bài viết</string>
+    <string name="delete_bookmark">Xóa dấu trang\n</string>
+    <string name="select_language">Chọn ngôn ngữ</string>
+    <string name="back_to_setting">Quay lại Cài đặt</string>
+    <string name="guest">Khách mời</string>
+    <string name="account_information">Thông tin tài khoản</string>
+    <string name="phone">Điện thoại:</string>
+    <string name="gender">Giới tính:</string>
+    <string name="register">Đăng ký</string>
+    <string name="save_profile">Lưu hồ sơ</string>
+    <string name="donation_amount">Số tiền quyên góp</string>
+    <string name="choose_your_payment_method">Chọn phương thức thanh toán của bạn</string>
+    <string name="binance_payment">Thanh toán Binance</string>
+    <string name="binance">Binance</string>
+    <string name="mastercard_payment">Thanh toán MasterCard</string>
+    <string name="mastercard">MasterCard</string>
+    <string name="stripe_payment">thanh toán sọc</string>
+    <string name="stripe">sọc</string>
+    <string name="paypal_payment">Thanh toán PayPal</string>
+    <string name="paypal">Paypal</string>
+    <string name="applepay_payment">Thanh toán ApplePay</string>
+    <string name="apple_pay">Apple Pay</string>
+    <string name="payment">Sự chi trả</string>
+    <string name="new_password">Mật khẩu mới:</string>
+    <string name="delete_history">Xóa lịch sử</string>
+    <string name="history_title">Tiêu đề lịch sử</string>
+    <!-- Language options -->
+    <string-array name="language_array">
+        <item>Tiếng Anh</item>
+        <item>Tiếng Việt</item>
+        <item>người Pháp</item>
+        <item>tiếng Đức</item>
+        <item>tiếng Tây Ban Nha</item>
+        <item>tiếng Nhật</item>
+        <item>Tiếng Trung</item>
+        <item>hàn quốc</item>
+        <item>người Ý</item>
+        <item>tiếng Bồ Đào Nha</item>
+        <item>tiếng Nga</item>
+        <item>Ả Rập</item>
+        <item>tiếng Thổ Nhĩ Kỳ</item>
+        <item>Đánh bóng</item>
+        <item>tiếng Thái</item>
+        <item>tiếng Thụy Điển</item>
+        <item>tiếng Đan Mạch</item>
+        <item>người Na Uy</item>
+        <item>tiếng Phần Lan</item>
+        <item>tiếng Croatia</item>
+        <item>Tiếng Slovak</item>
+        <item>tiếng Hungary</item>
+    </string-array>
+    <!-- Array for Day -->
+    <string-array name="day_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+
+    <!-- Array for Month -->
+    <string-array name="month_array">
+        <item>Tháng Một</item>
+        <item>Tháng hai</item>
+        <item>Bước đều</item>
+        <item>Tháng tư</item>
+        <item>Có thể</item>
+        <item>Tháng sáu</item>
+        <item>Tháng bảy</item>
+        <item>Tháng tám</item>
+        <item>Tháng 9</item>
+        <item>tháng mười</item>
+        <item>Tháng mười một</item>
+        <item>Tháng 12</item>
+    </string-array>
+
+    <!-- Array for Gender -->
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+</resources>

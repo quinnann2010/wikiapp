@@ -45,7 +45,7 @@ public class ExploreFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_explore, container, false); // Inflate the layout
+        return inflater.inflate(R.layout.fragment_explore, container, false);
     }
 
     @Override
@@ -54,68 +54,63 @@ public class ExploreFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_view);
         articles = new ArrayList<>();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext())); // Set up layout manager
-        articleAdapter = new ArticleAdapter(articles, article -> openArticle(article)); // Handle article click
-        recyclerView.setAdapter(articleAdapter); // Set up adapter
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        articleAdapter = new ArticleAdapter(articles, article -> openArticle(article));
+        recyclerView.setAdapter(articleAdapter);
 
-        loadExploreContent(); // Load articles
+        loadExploreContent();
 
         Button showButton = view.findViewById(R.id.show_vu);
-        showButton.setOnClickListener(v -> recyclerView.setVisibility(View.VISIBLE)); // Show RecyclerView on button click
+        showButton.setOnClickListener(v -> recyclerView.setVisibility(View.VISIBLE));
     }
 
     /*  LOAD TFA (TOP FEATURE ARTICLE) BY DAY*/
 
-    // Clear existing articles before loading new ones
     private void loadExploreContent() {
 
-        // Repeat for 5 days to get featured articles
         for (int i = 0; i <= 6; i++) {
-            String date = getDateForDaysAgo(i); // Get date for 'daysAgo'
-            String url = "https://api.wikimedia.org/feed/v1/wikipedia/en/featured/" + date; // Build URL
+            String date = getDateForDaysAgo(i);
+            String url = "https://api.wikimedia.org/feed/v1/wikipedia/en/featured/" + date;
 
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
                     .url(url)
                     .build();
 
-            client.newCall(request).enqueue(new Callback() { // Asynchronous call
+            client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(@NonNull okhttp3.Call call, @NonNull IOException e) {
                     requireActivity().runOnUiThread(() ->
-                            Toast.makeText(getContext(), "Failed to load explore content", Toast.LENGTH_SHORT).show()); // Show error message
+                            Toast.makeText(getContext(), "Failed to load explore content", Toast.LENGTH_SHORT).show());
                 }
 
                 @Override
                 public void onResponse(@NonNull okhttp3.Call call, @NonNull Response response) throws IOException {
                     if (!response.isSuccessful())
-                        throw new IOException("Unexpected code " + response); // Check response
+                        throw new IOException("Unexpected code " + response);
 
-                    String responseData = response.body().string(); // Get response body as string
-                    Gson gson = new Gson(); // Create Gson instance
-                    JsonObject jsonObject = gson.fromJson(responseData, JsonObject.class); // Parse JSON
+                    String responseData = response.body().string();
+                    Gson gson = new Gson();
+                    JsonObject jsonObject = gson.fromJson(responseData, JsonObject.class);
 
-                    // Check if "tfa" field exists
                     if (jsonObject.has("tfa")) {
                         JsonObject tfa = jsonObject.getAsJsonObject("tfa");
 
-                        // Add article from "tfa" to the list
-                        String title = tfa.getAsJsonObject("titles").get("display").getAsString(); // Get title
-                        String extract = tfa.get("extract").getAsString(); // Get description
-                        String articleUrl = tfa.getAsJsonObject("content_urls").getAsJsonObject("desktop").get("page").getAsString(); // Get article URL
+                        String title = tfa.getAsJsonObject("titles").get("display").getAsString();
+                        String extract = tfa.get("extract").getAsString();
+                        String articleUrl = tfa.getAsJsonObject("content_urls").getAsJsonObject("desktop").get("page").getAsString();
 
-                        // Get image URL if available
                         String imageUrl = "";
                         if (tfa.has("thumbnail")) {
                             JsonObject thumbnail = tfa.getAsJsonObject("thumbnail");
-                            imageUrl = thumbnail.get("source").getAsString(); // Get image URL
+                            imageUrl = thumbnail.get("source").getAsString();
                         }
 
-                        articles.add(new Article(articleUrl, title, extract, 0, imageUrl)); // Add article to the list
+                        articles.add(new Article(articleUrl, title, extract, 0, imageUrl));
                     }
 
                     requireActivity().runOnUiThread(() -> {
-                        articleAdapter.notifyDataSetChanged(); // Notify adapter of data change
+                        articleAdapter.notifyDataSetChanged();
                     });
                 }
             });
@@ -124,7 +119,6 @@ public class ExploreFragment extends Fragment {
     }
 
     private String getDateForDaysAgo(int daysAgo) {
-        // Get the date for 'daysAgo' days ago
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_YEAR, -daysAgo);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
@@ -133,16 +127,16 @@ public class ExploreFragment extends Fragment {
 
 
     private void openArticle(Article article) {
-        recyclerView.setVisibility(View.GONE); // Hide recycler view
-        Fragment articleFragment = ArticleFragment.newInstance(article.getTitle(), article.getUrl()); // Create new fragment instance
+        recyclerView.setVisibility(View.GONE);
+        Fragment articleFragment = ArticleFragment.newInstance(article.getTitle(), article.getUrl());
         requireActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, articleFragment) // Replace current fragment
-                .addToBackStack(null) // Add to back stack
+                .replace(R.id.fragment_container, articleFragment)
+                .addToBackStack(null)
                 .commit();
     }
 
     private String getLanguagePreference() {
         SharedPreferences prefs = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
-        return prefs.getString("language_code", "en"); // Return user's language preference
+        return prefs.getString("language_code", "en");
     }
 }

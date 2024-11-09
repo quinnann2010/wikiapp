@@ -142,7 +142,7 @@ public class SearchFragment extends Fragment {
     private void openArticleFragment(String title, String url) {
         Log.d("SearchFragment", "Adding URL to history: " + url);
 
-        saveToHistory(url); // Save directly to SharedPreferences
+        saveToHistory(url);
 
         Fragment articleFragment = ArticleFragment.newInstance(title, url);
         requireActivity().getSupportFragmentManager()
@@ -164,6 +164,6 @@ public class SearchFragment extends Fragment {
 
     private String getLanguagePreference() {
         SharedPreferences prefs = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
-        return prefs.getString("language_code", "en"); // Default to English if no preference is set
+        return prefs.getString("language_code", "en");
     }
 }

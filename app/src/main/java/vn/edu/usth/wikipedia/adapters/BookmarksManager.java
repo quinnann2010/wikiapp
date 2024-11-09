@@ -11,8 +11,8 @@ import java.util.Set;
  */
 public class BookmarksManager {
 
-    private static final String PREFS_NAME = "bookmarks_prefs"; // SharedPreferences file name
-    private static final String KEY_BOOKMARKS = "bookmarks"; // Key for storing bookmarks
+    private static final String PREFS_NAME = "bookmarks_prefs";
+    private static final String KEY_BOOKMARKS = "bookmarks";
 
     private SharedPreferences sharedPreferences; // SharedPreferences instance
 
@@ -40,9 +40,9 @@ public class BookmarksManager {
      * @param articleUrl The URL of the article to bookmark.
      */
     public void addBookmark(String articleUrl) {
-        Set<String> bookmarks = getBookmarks(); // Get current bookmarks
-        bookmarks.add(articleUrl); // Add the new bookmark
-        sharedPreferences.edit().putStringSet(KEY_BOOKMARKS, bookmarks).apply(); // Save the updated bookmarks
+        Set<String> bookmarks = getBookmarks();
+        bookmarks.add(articleUrl);
+        sharedPreferences.edit().putStringSet(KEY_BOOKMARKS, bookmarks).apply();
     }
 
     /**
@@ -51,9 +51,9 @@ public class BookmarksManager {
      * @param articleUrl The URL of the article to remove from bookmarks.
      */
     public void removeBookmark(String articleUrl) {
-        Set<String> bookmarks = getBookmarks(); // Get current bookmarks
-        bookmarks.remove(articleUrl); // Remove the bookmark
-        sharedPreferences.edit().putStringSet(KEY_BOOKMARKS, bookmarks).apply(); // Save the updated bookmarks
+        Set<String> bookmarks = getBookmarks();
+        bookmarks.remove(articleUrl);
+        sharedPreferences.edit().putStringSet(KEY_BOOKMARKS, bookmarks).apply();
     }
 
     /**
@@ -63,13 +63,13 @@ public class BookmarksManager {
      * @return True if the article is bookmarked, otherwise false.
      */
     public boolean isBookmarked(String articleUrl) {
-        return getBookmarks().contains(articleUrl); // Check if the URL is in the bookmarks set
+        return getBookmarks().contains(articleUrl);
     }
 
     /**
      * Clears all bookmarks.
      */
     public void clearBookmarks() {
-        sharedPreferences.edit().remove(KEY_BOOKMARKS).apply(); // Remove all bookmarks
+        sharedPreferences.edit().remove(KEY_BOOKMARKS).apply();
     }
 }

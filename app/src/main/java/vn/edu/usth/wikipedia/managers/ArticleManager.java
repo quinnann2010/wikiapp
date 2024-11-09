@@ -18,8 +18,8 @@ import vn.edu.usth.wikipedia.models.Article;
  */
 public class ArticleManager {
 
-    private static final String ARTICLES_DIR = "saved_articles"; // Directory name for saved articles
-    private static final String TAG = "ArticleManager"; // Log tag for error reporting
+    private static final String ARTICLES_DIR = "saved_articles";
+    private static final String TAG = "ArticleManager";
     private File articlesDir; // Directory where articles are stored
 
     /**
@@ -28,9 +28,7 @@ public class ArticleManager {
      * @param context The application context.
      */
     public ArticleManager(Context context) {
-        // Set the directory for saved articles within the external files directory
         articlesDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), ARTICLES_DIR);
-        // Create the directory if it doesn't exist
         if (!articlesDir.exists()) {
             articlesDir.mkdirs();
         }
@@ -38,19 +36,16 @@ public class ArticleManager {
 
     public void addArticle(String url, String title) {
         try {
-            // Create a new file for the article
             File articleFile = new File(getArticleFilePath(url));
             if (!articleFile.exists()) {
                 articleFile.createNewFile();
             }
         } catch (IOException e) {
-            // Log an error if there is an issue creating the file
             Log.e(TAG, "Error adding article", e);
         }
     }
 
     public boolean isArticleSaved(String url) {
-        // Check if the article file exists in the saved articles directory
         return new File(getArticleFilePath(url)).exists();
     }
 
@@ -73,7 +68,6 @@ public class ArticleManager {
      * @return The absolute file path for the article.
      */
     public String getArticleFilePath(String url) {
-        // Return the file path with a hash of the URL as the file name and ".mht" extension
         return new File(articlesDir, url.hashCode() + ".mht").getAbsolutePath();
     }
 

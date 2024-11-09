@@ -41,15 +41,15 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         Article article = articles.get(position);
         holder.titleTextView.setText(article.getTitle());
         holder.descriptionTextView.setText(article.getDescription());
-        holder.articleImage.setImageResource(article.getImageResId()); // Ảnh mẫu, thay thế bằng logic tải ảnh thực tế
+        holder.articleImage.setImageResource(article.getImageResId());
 
         if (!article.getImageUrl().isEmpty()) {
             Picasso.get()
-                    .load(article.getImageUrl()) // Load the image URL
-                    .into(holder.articleImage); // Set it to the ImageView
+                    .load(article.getImageUrl())
+                    .into(holder.articleImage);
         } else {
             // Optionally set a placeholder image if the URL is empty
-            holder.articleImage.setImageResource(R.drawable.wiki_icon); // Placeholder image resource
+            holder.articleImage.setImageResource(R.drawable.wiki_icon);
         }
 
 

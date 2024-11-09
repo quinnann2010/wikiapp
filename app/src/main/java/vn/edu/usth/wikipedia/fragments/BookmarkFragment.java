@@ -57,9 +57,8 @@ public class BookmarkFragment extends Fragment implements BookmarkAdapter.Bookma
 
         checkIfEmpty();
 
-        // Thiết lập sự kiện nhấp vào bookmark
         bookmarkAdapter.setOnItemClickListener(bookmark -> {
-            openArticleFragment(bookmark); // Mở ArticleFragment khi nhấn vào bookmark
+            openArticleFragment(bookmark);
         });
 
         clearButton.setOnClickListener(v -> {
@@ -78,9 +77,9 @@ public class BookmarkFragment extends Fragment implements BookmarkAdapter.Bookma
     @Override
     public void onResume() {
         super.onResume();
-        loadBookmarks();  // Tải lại bookmark từ SharedPreferences
-        bookmarkAdapter.notifyDataSetChanged();  // Cập nhật lại giao diện
-        checkIfEmpty();  // Kiểm tra xem danh sách bookmark có trống không
+        loadBookmarks();
+        bookmarkAdapter.notifyDataSetChanged();
+        checkIfEmpty();
     }
 
     private void loadBookmarks() {
@@ -107,12 +106,11 @@ public class BookmarkFragment extends Fragment implements BookmarkAdapter.Bookma
         }
     }
 
-    // Mở ArticleFragment với URL của bài viết được nhấn vào
     private void openArticleFragment(String bookmarkUrl) {
         ArticleFragment articleFragment = ArticleFragment.newInstance("Bookmark Article", bookmarkUrl);
         FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, articleFragment);
-        transaction.addToBackStack(null); // Cho phép quay lại
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 

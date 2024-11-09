@@ -40,10 +40,8 @@ public class SettingActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_setting);
 
-        // Initialize shared preferences
         prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
 
-        // Initialize views
         loginButton = findViewById(R.id.login_button);
         donateButton = findViewById(R.id.donate_button);
         languageButton = findViewById(R.id.language_button);
@@ -56,7 +54,6 @@ public class SettingActivity extends AppCompatActivity {
         userImage = findViewById(R.id.user_image);
         usernameText = findViewById(R.id.username_text);
 
-        // Set username and login/logout button based on login status
         boolean isLoggedIn = prefs.getBoolean("isLoggedIn", false);
         String username = prefs.getString("username", "Guest");
 
@@ -69,7 +66,6 @@ public class SettingActivity extends AppCompatActivity {
             loginButtonText.setOnClickListener(view -> openLoginFragment());
         }
 
-        // Set up button actions
         userImage.setOnClickListener(view -> openAccountInfoFragment());
         donateButton.setOnClickListener(view -> openDonateFragment());
         donateButtonText.setOnClickListener(view -> openDonateFragment());
@@ -160,7 +156,6 @@ public class SettingActivity extends AppCompatActivity {
         editor.putString("username", "Guest");
         editor.apply();
 
-        // Update UI after logout
         loginButtonText.setText("Login");
         usernameText.setText("Guest");
         loginButtonText.setOnClickListener(view -> openLoginFragment());

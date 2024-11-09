@@ -18,12 +18,10 @@ public class PaymentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payment); // Load the layout for payment
+        setContentView(R.layout.activity_payment);
 
-        // Get the donation amount passed from the previous screen
         String donationAmount = getIntent().getStringExtra("donationAmount");
 
-        // Show the donation amount on the screen
         TextView donationTextView = findViewById(R.id.donation_amount_text);
         donationTextView.setText("You are donating: " + donationAmount);
 
@@ -35,7 +33,7 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     public void onPaymentMethodClick(View view) {
-        int id = view.getId(); // Get the ID of the clicked view
+        int id = view.getId(); 
 
         // Handle different payment methods
         if (id == R.id.binance_payment) {

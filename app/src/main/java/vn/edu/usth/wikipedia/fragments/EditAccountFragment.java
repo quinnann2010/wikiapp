@@ -39,7 +39,6 @@ public class EditAccountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize views
         emailEdit = view.findViewById(R.id.email_edit);
         phoneEdit = view.findViewById(R.id.phone_edit);
         genderEdit = view.findViewById(R.id.gender_edit_spinner);
@@ -51,13 +50,10 @@ public class EditAccountFragment extends Fragment {
 
         dbHelper = new DatabaseHelper(getContext());
 
-        // Retrieve logged-in username from shared preferences
         username = requireActivity().getSharedPreferences("user_prefs", requireContext().MODE_PRIVATE).getString("username", "Guest");
 
-        // Load current data
         loadUserData();
 
-        // Set up save button
         saveButton.setOnClickListener(v -> saveUpdatedInfo());
     }
 
@@ -69,13 +65,12 @@ public class EditAccountFragment extends Fragment {
             dobEdit.setText(cursor.getString(cursor.getColumnIndex("dob")));
             String gender = cursor.getString(cursor.getColumnIndex("gender"));
 
-            // Set gender selection based on retrieved value
             if (gender.equalsIgnoreCase("Male")) {
                 genderEdit.setSelection(0);
             } else if (gender.equalsIgnoreCase("Female")) {
                 genderEdit.setSelection(1);
             } else {
-                genderEdit.setSelection(2); // Assume "Other" or a default option
+                genderEdit.setSelection(2);
             }
             cursor.close();
         }

@@ -53,27 +53,22 @@ public class SaveFragment extends Fragment {
         savedArticles = getSavedArticles();
 
         adapter = new SavedArticleAdapter(savedArticles, article -> {
-            // Handle article click
             openArticle(article.getUrl());
         }, article -> {
-            // Handle delete button click
             deleteArticle(article);
         });
 
         recyclerView.setAdapter(adapter);
 
-        // Check if the list is empty and update UI
         checkIfEmpty();
 
-        // Clear all saved articles
         clearAllButton.setOnClickListener(v -> {
             savedArticlesManager.clearSavedArticles();
             savedArticles.clear();
             adapter.notifyDataSetChanged();
-            checkIfEmpty();  // Check and update "Empty" view
+            checkIfEmpty();
         });
 
-        // Go back to the home screen
         backToHomeButton.setOnClickListener(v -> {
             requireActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new SearchFragment())
@@ -109,9 +104,9 @@ public class SaveFragment extends Fragment {
 
     private void deleteArticle(Article article) {
         savedArticlesManager.removeArticle(article.getUrl());
-        savedArticles.remove(article); // Remove from display list
-        adapter.notifyDataSetChanged(); // Update UI
-        checkIfEmpty();  // Check and update "Empty" view
+        savedArticles.remove(article);
+        adapter.notifyDataSetChanged();
+        checkIfEmpty();
     }
 
     private void checkIfEmpty() {
