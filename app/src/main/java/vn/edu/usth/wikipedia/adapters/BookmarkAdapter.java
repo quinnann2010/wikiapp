@@ -50,7 +50,6 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
         String bookmark = bookmarks.get(position);
         holder.titleTextView.setText(bookmark);
 
-        // Xử lý sự kiện xóa bookmark
         holder.deleteButton.setOnClickListener(v -> {
             if (deleteListener != null) {
                 deleteListener.onDelete(bookmark);
@@ -60,7 +59,6 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.ViewHo
             }
         });
 
-        // Xử lý sự kiện nhấp vào bookmark
         holder.itemView.setOnClickListener(v -> {
             if (onItemClickListener != null) {
                 onItemClickListener.onItemClick(bookmark);
